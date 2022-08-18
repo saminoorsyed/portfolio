@@ -1,0 +1,149 @@
+
+body {
+    display: flex;
+    font-family: "Calibre","Inter","San Francisco","SF Pro Text",system-ui,sans-serif;
+    background-color: #0a192f;
+    flex-direction: column;
+}
+
+h1 {
+    color: white;
+}
+
+
+a {
+    color: #e6f1ff;
+    font-style: none;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #f37049;
+}
+
+
+.title {
+    color: #f37049;
+}
+.top-nav {
+    display: flex;
+    /* font-family: 'Amatic SC', cursive; */
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 40px;
+    flex: 1;
+    font-size: 15px;
+    color: #f37049;
+}
+
+.nav {
+    display: flex;
+    color: #e6f1ff;
+}
+
+.butt {
+    padding: 15px;
+    list-style-type: none;
+    font-weight: 600;
+    color: #f37049;
+
+}
+
+.resume {
+    padding: 15px;
+    box-shadow: inset 0px 0px 5px 5px #f37049, 0px 0px 5px 3px #f37049;
+    padding: 15px 10px 10px 10px;
+    list-style-type: none;
+    font-weight: 800;
+
+}
+
+.container{
+    display: flex;
+    color: white;
+}
+
+div.sidebarleft {
+    writing-mode: vertical-rl;
+    text-orientation: sideways-right;
+    position: fixed;
+    bottom: 0;
+    font-size: 20px;
+    width: 50px;
+}
+div.sidebarright{
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    width: 30px;
+    padding: 20px
+}
+
+.sidebarright img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.content {
+    padding: 0px 150px;
+}
+
+.intro {
+    margin-bottom: 150px;
+    padding: 40px;
+    border-bottom: 1px solid #f37049;
+}
+
+.small-hi {
+    font-size: 25px;
+    color:white
+}
+.name{
+    font-size: 90px;
+    margin: 10px 0px;
+    color: #57cbff;
+}
+
+.my-website{
+    font-size: 50px;
+    color: #8892b0;
+}
+
+.use-code {
+    font-size: 30px;
+}
+
+.byline {
+    font-size: 25px;
+    color: rgb(205, 221, 254);
+}
+
+.projects {
+    font-size: ;
+}
+
+.descriptions {
+    display: flex;
+}
+
+.texts {
+    font-size: 20px;
+    font-family: Calibre, Inter, "San Francisco", "SF Pro Text", -apple-system, system-ui, sans-serif;
+    text-align: justify;
+    float:left;
+    flex-wrap: wrap;
+}
+
+
+img {
+    width: 300px;
+    height: 300px;
+    float: right; 
+    margin-left: 20px;
+    border-radius: 20px;
+}
+
+.subtitles {
+    color:white;
+}
