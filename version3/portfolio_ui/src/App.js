@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+// import dependencies
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { useState } from 'react';
+
+// import pages
+import HomePage from './pages/HomePage';
+import BlogPage from './pages/BlogPage';
+import ContactPage from './pages/ContactPage';
+import ResumePage from './pages/ResumePage';
+// import components
+import Header from './components/Header';
+import Navigation from './components/Navigation';
+import Footer from './components/Footer';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <p>hello</p>
+        {/* navigation and header should show up on every page */}
+        <Header/>
+        <Navigation/>
+        <main>
+          <Route path = "/" exact>
+            <HomePage/>
+          </Route>
+          
+          <Route path = "/blog">
+            <BlogPage/>
+          </Route>
+
+          <Route path = "/contact">
+            <ContactPage/>
+          </Route>
+
+          <Route path = "/resume">
+            <ResumePage/>
+          </Route>
+        </main>
+        <Footer/>
+      </Router>
+    </>
   );
 }
 
-export default App;
+export default App
