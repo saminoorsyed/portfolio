@@ -1,7 +1,10 @@
 // import dependencies
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { useState } from 'react';
+import { render } from "react-dom";
+import {
+  Routes,
+  Route
+} from "react-router-dom";
 
 // import pages
 import HomePage from './pages/HomePage';
@@ -14,35 +17,21 @@ import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 
 
-function App() {
+export default function App() {
   return (
-    <>
-      <Router>
-        <p>hello</p>
+    <div class='application'>
         {/* navigation and header should show up on every page */}
         <Header/>
         <Navigation/>
         <main>
-          <Route path = "/" exact>
-            <HomePage/>
-          </Route>
-          
-          <Route path = "/blog">
-            <BlogPage/>
-          </Route>
-
-          <Route path = "/contact">
-            <ContactPage/>
-          </Route>
-
-          <Route path = "/resume">
-            <ResumePage/>
-          </Route>
+            <Routes>
+              <Route path = "/" element = {<HomePage />}/>
+              <Route path = "/blog" element = {<BlogPage/>}/>
+              <Route path = "/contact" element = {<ContactPage/>}/>
+              <Route path = "/resume" element = {<ResumePage/>}/>
+            </Routes>
         </main>
         <Footer/>
-      </Router>
-    </>
+    </div>
   );
 }
-
-export default App
