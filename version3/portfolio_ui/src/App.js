@@ -6,6 +6,8 @@ import {
   Route
 } from "react-router-dom";
 
+// import style
+import './App.css';
 // import pages
 import HomePage from './pages/HomePage';
 import BlogPage from './pages/BlogPage';

@@ -1,38 +1,299 @@
-.App {
-  text-align: center;
-}
+/*  ===== MOBILE styles (reside at the top and are inherited by all devices) ===== */
+/*  ===== See tablet, desktop, and print @media queries at the bottom. */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+/*   ----- Imports  -----  */
+          /* Add fonts from the app's server 
+@font-face {                
+  font-family: 'FontName';
+  src: url('FontName.woff2') format('woff2');
+} 
+          */                           
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+          @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap');
+          /* font -family: 'Dosis', sans-serif; */
+          
+          /* normalize */
+          @import '../node_modules/modern-normalize/modern-normalize.css';
+                    /* npm install modern-normalize 
+                      Resets elements for browser consistency.  
+                      http://nicolasgallagher.com/about-normalize-css/ 
+                    */
+          
+                    /* Component-specific stylesheets, if any 
+          @import "component1.css";   
+                    */
+          
+          /*   ----- Variables  -----  */
+          :root {
+            --header-footer-color: #fffbeb ;
+            --font-color: #78350f;
+            --font: 'Dosis', sans-serif, 'Courier New', Courier, monospace, Arial, Helvetica, sans-serif;
+          }
+          
+          /*  ----- Viewport ----- elements inherited by all remaining elements ----- */
+          body {       /* Can alternatively define in html {} or :root {} */
+            color: var(--font-color);
+            background-color: var(--header-footer-color);
+            font-family: var(--font);
+            font-size: 1.2rem;
+            margin:0px;
+            padding:0px;
+          }
+          
+          /* give specific styling to the app so that it's contents fall into a grid and take up the screen*/
+          .app {
+            display: grid;
+            grid-template: 1fr 5fr 50px / 1fr 1fr ;
+            height: 100vh;
+          }
+          
+          /* ----- Anchors ----- Text links */
+          a {}
+          a:link {}
+          a:hover {}
+          a:active {}
+          a:visited {}
+          
+          /*  ----- Navigation ----- Override text links for navigation only.  */
+          /* make the nav a flex container so that the links can grow smoothly */
+          /* did not need to add a background color since the body has it */
+          nav {
+            background-color: var(--header-footer-color);
+            text-align: center;
+            align-self: center;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-left: 100px;
+            padding: 20px;
+            border-bottom: 3px double var(--font-color) ;
+            border-top: 3px double var(--font-color) ;
+            /* vertical alignment does nothing because of css grid */
+            vertical-align: center;
+            line-height: 10px;
+            font-weight: 500;
+          }
+          /* add transition to font */
+          nav a {
+            color:#d97706;
+            font-size: 1.5rem;
+            transition:font 0.5s ease;
+            height: auto;
+          }
+          /* expand font size to make clicking easier */
+          nav a:hover {
+            color:#fbbf24;
+            font-size: 2rem;
+            font-weight: 700;
+          }
+          
+          /*  ----- Page layout blocks -----  */
+          header {
+            background-color: var(--header-footer-color);
+            padding:0px;
+            padding-left: 40px;
+            color: var(--font-color);
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin: 0px;
+            /* allows for adjustability, but does not actually add a visible border */
+            border-bottom:1px solid var(--header-footer-color);
+          }
+          
+          main {
+            /* background: url(../src/images/Groceries.jpg) no-repeat center center fixed; */
+            background-size: cover;
+            background-color: var(--header-footer-color);
+            grid-area: 2/1/3/3;
+            color: var(--font-color);
+            padding: 10px;
+            border:1px solid var(--header-footer-color);
+            box-shadow: inset 0 -15px 5px -5px var(--header-footer-color), 
+                        inset 0 15px 5px -5px var(--header-footer-color);
+          }
+          
+          section {}
+            article {
+              padding:20px;
+              padding-left: 40px;
+            }
+              #topic1 {}
+              #topic2 {}
+              #gallery1 {}
+              #gallery2 {}
+          div {}
+          aside {}
+          footer {
+            background-color: var(--header-footer-color);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            grid-area: 3/1/3/3;
+            font-size: 1.2rem ;
+            font-weight:500;
+            padding: 5px;
+            margin:0;
+            /* used box shadow on main to give fade from picture affect. */
+            border: 1px solid var(--header-footer-color);
+          }
+          
+          /*  -----  Typography  ----- */
+          p {
+            padding: 5px;
+          }
+          header p {
+            padding: 0px;
+            margin:0px;
+          }
+          br {}
+          ol, ul, dl {}
+          li {}
+          dt {}
+          dd {}
+          
+          h1, h2, h3, h4, h5, h6 {} /* Define consistant font family.*/
+          h1 {
+            margin-bottom: 10px;
+          }
+          h2 {}
+          h3 {}
+          h4 {}
+          h5 {}
+          h6 {}
+          
+          abbr {}
+          acronym {}
+          address {}
+          blockquote {}
+            q {}
+            cite {}
+          em {}
+          hr {}
+          mark {}
+          s {}
+          span {}
+          strong {}
+          sub {}
+          sup {}
+          time {}
+          
+          /*  ----- Coding or instructional typography ----- */
+          pre {}
+          code {}
+          kbd {}
+          samp {}
+          var {}
+          del {} 
+          ins {}
+          
+          /*  ----- Table ----- */
+          table {
+            border-collapse: separate;
+            border: 5px double #fbbf24;
+            padding: 15px;
+            margin:15px;
+          }
+          caption {
+            font-size: 1rem;
+          }
+          thead {}
+          tbody {}
+          tfoot {}
+          tr {}
+            tr:nth-child(even) {}
+          th {}
+          td {
+          }
+            td:nth-child(1) {}
+          colgroup {}
+          data {}
+          datalist {}
+          
+          
+          /*  ----- Form ----- */
+          form {
+            font-family: var(--font);
+            max-width: fit-content;
+            font-size: 1.5rem;
+            padding:10px;
+          }
+          fieldset {
+            font-family: var(--font);
+            border: 2px solid var(--font-color);
+            border-radius: 5px;
+          }
+            legend {}
+          
+            label {}
+          
+            button {
+              padding: 10px;
+              border-radius: 0 5px 5px 0;
+              background-color: #fbbf24;
+              font-family: var(--font);
+            }
+            
+            button:hover {
+              background-color:#d97706;
+            }
+          
+            input {
+              font-family:var(--font);
+              padding: 10px;
+              border-radius: 5px 0 0 5px;
+            }
+            output {}
+            meter {}
+            progress {}
+            select {}
+              optgroup {}
+              option {}
+            textarea {}
+          
+          /* ----- Media ----- */
+          figure {}
+            figcaption {}
+          img {}
+          svg {}
+          picture {}
+            source {}
+          iframe {}
+          video {}
+          audio {}
+          embed {}
+          object {}
+          
+          
+          /*  ----- Classes for alignment, positioning, widths, grids, embellishments, and animation -----  */
+          .floatright {}
+          .floatleft {}
+          .center-middle {}
+          
+          .ten {}
+          .twenty {}
+          .thirty {}
+          .forty {}
+          .fifty {}
+          .sixty {}
+          .seventy {}
+          .eighty {}
+          
+          .radius {}
+          .circle {}
+          .boxshadow {}
+          .tshadow {} 
+          .gradient {}
+          .shape {}
+          
+          @keyframes App-logo {}
+          
+          /*   ===== TABLET  media query overrides mobile styles ===== */
+          @media all and (min-width: 600px) {}
+          
+          /*   ===== DESKTOP  media query overrides mobile and tablet styles ===== */
+          @media all and (min-width: 1080px) {}
+          
+          /*   ===== PRINT  media query overrides previous styles =====  */
+          @media print {}
+          
