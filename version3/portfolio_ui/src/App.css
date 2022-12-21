@@ -10,7 +10,7 @@
 } 
           */                           
 
-          @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400&display=swap');
           /* font -family: 'Dosis', sans-serif; */
           
           /* normalize */
@@ -26,9 +26,9 @@
           
           /*   ----- Variables  -----  */
           :root {
-            --header-footer-color: #fffbeb ;
-            --font-color: #78350f;
-            --font: 'Dosis', sans-serif, 'Courier New', Courier, monospace, Arial, Helvetica, sans-serif;
+            --header-footer-color: #f8fafc ;
+            --font-color: #475569;
+            --font:'Andika', sans-serif, 'Courier New', Courier, monospace, Arial, Helvetica, sans-serif;
           }
           
           /*  ----- Viewport ----- elements inherited by all remaining elements ----- */
@@ -39,13 +39,6 @@
             font-size: 1.2rem;
             margin:0px;
             padding:0px;
-          }
-          
-          /* give specific styling to the app so that it's contents fall into a grid and take up the screen*/
-          .app {
-            display: grid;
-            grid-template: 1fr 5fr 50px / 1fr 1fr ;
-            height: 100vh;
           }
           
           /* ----- Anchors ----- Text links */
@@ -59,40 +52,32 @@
           /* make the nav a flex container so that the links can grow smoothly */
           /* did not need to add a background color since the body has it */
           nav {
-            background-color: var(--header-footer-color);
+            background-color: rgba(203, 213, 225, .5);
             text-align: center;
             align-self: center;
             display: flex;
             justify-content: center;
             gap: 50px;
-            margin-left: 100px;
-            padding: 20px;
-            border-bottom: 3px double var(--font-color) ;
-            border-top: 3px double var(--font-color) ;
-            /* vertical alignment does nothing because of css grid */
-            vertical-align: center;
+            padding: 1.5rem;
             line-height: 10px;
             font-weight: 500;
           }
           /* add transition to font */
           nav a {
-            color:#d97706;
+            color:#94a3b8;
             font-size: 1.5rem;
             transition:font 0.5s ease;
             height: auto;
           }
           /* expand font size to make clicking easier */
           nav a:hover {
-            color:#fbbf24;
-            font-size: 2rem;
+            color:#1e293b;
+            font-size: 1.7rem;
             font-weight: 700;
           }
           
           /*  ----- Page layout blocks -----  */
           header {
-            background-color: var(--header-footer-color);
-            padding:0px;
-            padding-left: 40px;
             color: var(--font-color);
             font-size: 1.4rem;
             font-weight: 500;
@@ -105,18 +90,19 @@
             /* background: url(../src/images/Groceries.jpg) no-repeat center center fixed; */
             background-size: cover;
             background-color: var(--header-footer-color);
-            grid-area: 2/1/3/3;
             color: var(--font-color);
-            padding: 10px;
-            border:1px solid var(--header-footer-color);
-            box-shadow: inset 0 -15px 5px -5px var(--header-footer-color), 
-                        inset 0 15px 5px -5px var(--header-footer-color);
+            grid-area: 2/1/3/2;
+            justify-self: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1000px;
           }
           
           section {}
             article {
-              padding:20px;
-              padding-left: 40px;
+              display: flex;
+              align-items: center;
             }
               #topic1 {}
               #topic2 {}
@@ -129,7 +115,7 @@
             text-align: center;
             display: flex;
             flex-direction: column;
-            grid-area: 3/1/3/3;
+            grid-area: 3/1/4/2;
             font-size: 1.2rem ;
             font-weight:500;
             padding: 5px;
@@ -154,7 +140,7 @@
           
           h1, h2, h3, h4, h5, h6 {} /* Define consistant font family.*/
           h1 {
-            margin-bottom: 10px;
+            margin: 10px;
           }
           h2 {}
           h3 {}
@@ -266,6 +252,13 @@
           
           
           /*  ----- Classes for alignment, positioning, widths, grids, embellishments, and animation -----  */
+          /* give specific styling to the app so that it's contents fall into a grid and take up the screen*/
+          .application {
+            display: grid;
+            grid-template: 2.5rem 1fr 2rem/ 1fr;
+            height: 100vh;
+          }
+          
           .floatright {}
           .floatleft {}
           .center-middle {}

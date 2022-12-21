@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function Skills() {
+export default function Projects() {
   return (
     <div>
-        skills section
+        Projects
     </div>
   );
 }
