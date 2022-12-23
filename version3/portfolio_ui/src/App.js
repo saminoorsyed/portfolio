@@ -20,11 +20,11 @@ import Footer from './components/Footer';
 
 export default function App() {
   return (
-    <div class='application'>
+    <div className='application'>
         <Navigation/>
         <main>
             <Routes>
-              <Route path = "/" element = {<HomePage />}/>
+              <Route path = "/" element = {<HomePage/>}/>
               <Route path = "/blog" element = {<BlogPage/>}/>
               <Route path = "/contact" element = {<ContactPage/>}/>
               <Route path = "/resume" element = {<ResumePage/>}/>

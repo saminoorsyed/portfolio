@@ -26,16 +26,18 @@
           
           /*   ----- Variables  -----  */
           :root {
+            /* color pallet is slate from tailwind color palettes */
             --main-color:#f8fafc;
             --header-footer-color: rgba(203, 213, 225, .5);
             --font-color: #475569;
+            --border-color: #1e293b;
             --font:'Andika', sans-serif, 'Courier New', Courier, monospace, Arial, Helvetica, sans-serif;
           }
           
           /*  ----- Viewport ----- elements inherited by all remaining elements ----- */
           body {       /* Can alternatively define in html {} or :root {} */
             color: var(--font-color);
-            background-color: var(--header-footer-color);
+            background-color: var(--main-color);
             font-family: var(--font);
             font-size: 1.2rem;
             margin:0px;
@@ -93,14 +95,14 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            
-            max-width: 1000px;
           }
           
           section {}
             article {
               display: flex;
-              align-items: center;
+              border-width: 500px;
+              border-bottom: solid 2px #1e293b;
+              height: 500px;
             }
               #topic1 {}
               #topic2 {}
@@ -118,6 +120,7 @@
             font-weight:500;
             padding: 5px;
             margin:0;
+            box-shadow: 0 3px 3px var(--border-color);
           }
           
           /*  -----  Typography  ----- */
@@ -253,19 +256,15 @@
             display: grid;
             grid-template: 2.5rem 1fr 2rem/ 1fr;
             height: 100vh;
-            background-color: var(--main-color);
-          }
-          
-          .fade-in {
-            animation: fade 1s ease-in;
           }
 
-          @keyframes fade {
-            0% {
-              opacity: 0;
-            }
+          .landing {
+            display: flex;
+            align-items: center;
           }
-
+          .about{
+            
+          }
  
           .floatleft {}
           .center-middle {}
