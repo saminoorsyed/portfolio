@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
 import '../App.css'
 
 
-export default function Header() {
+export default function article() {
   return (
-    <header>
+    <article className='landing'>
       <h1>Sami Noor Syed</h1>
-      <p >A Computer Programmer</p>
-    </header>
+      <p>A Computer Programmer</p>
+    </article>
   );
 }
 

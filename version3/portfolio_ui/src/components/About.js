@@ -2,9 +2,10 @@ import React from 'react';
 
 export default function About() {
   return (
-    <div className='about'>
-        <h3>About Me</h3>
-        <p> While I'm particularly interested in web technologies at the moment,I like to see myself in more general terms as a computer programmer. I see the myriad of technologies from web development, artificial intelligence and machine learning to robotics and the internet of things as tools to improve and innovate a world of solutions which improve the quality of life and efficiency of those people who use them. At the moment I'm studying computer science online at Oregon State University and supplementing my studies by working through <a href='https://www.theodinproject.com/'>The Odin Project</a>, a full stack boot camp. In the future, I look forward to contributing to and building projects that help me to explore the many tools that programmers can use.</p>
-    </div>
+    <article className='about'>
+        <h3>About me</h3>
+        <p> Hi, I'm currently studying computer science at Oregon State University while also pursuing my own interests in computer programming. Since the first time I began fiddling with an Arduino board in 2013, I've viewed computers as fantastically useful tools. At the moment the bulk of my time and coursework focuses on web development (which has so far been fascinating), but I look forward to exploring the many nooks and crannies the vast array of computer technologies has to offer. I'm particularly interested in artificial intelligence, computer vision, augmented and virtual reality as well as the internet of things. I know it's a big list, but sometimes I can't help but feel intrigued by each topic.</p>
+        <p> Outside of the time that I spend studying at my desk, I enjoy a diversity of hobbies, namely a bit of creative writing, running, and playing the occasional song on a my guitar. </p>
+    </article>
   );
 }

@@ -2,8 +2,7 @@ import React from 'react';
 
 export default function Projects() {
   return (
-    <div>
-        Projects
-    </div>
-  );
-}
+    <article >
+        <h3>Projects</h3>
+    </article>
+  )}

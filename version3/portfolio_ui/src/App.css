@@ -79,10 +79,6 @@
           
           /*  ----- Page layout blocks -----  */
           header {
-            color: var(--font-color);
-            font-size: 1.4rem;
-            font-weight: 500;
-            margin: 0px;
           }
           
           main {
@@ -97,12 +93,20 @@
             align-items: center;
           }
           
-          section {}
+          section {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+          }
             article {
               display: flex;
+              flex-direction: column;
               border-width: 500px;
               border-bottom: solid 2px #1e293b;
               height: 500px;
+              max-width: 850px;
+              min-width: 500px;
             }
               #topic1 {}
               #topic2 {}
@@ -138,11 +142,13 @@
           dd {}
           
           h1, h2, h3, h4, h5, h6 {} /* Define consistant font family.*/
-          h1 {
-            margin: 10px;
+          h1 { 
+            font-size: 3rem;
           }
           h2 {}
-          h3 {}
+          h3 {
+            align-self: center;
+          }
           h4 {}
           h5 {}
           h6 {}
@@ -252,18 +258,33 @@
           
           /*  ----- Classes for alignment, positioning, widths, grids, embellishments, and animation -----  */
           /* give specific styling to the app so that it's contents fall into a grid and take up the screen*/
+          .landing {
+            color: var(--font-color);
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin: 0px;
+            padding:0;
+            align-items: center;
+            justify-content: center;
+          }
+          .landing>*{
+            margin: 0px;
+          }
           .application {
             display: grid;
             grid-template: 2.5rem 1fr 2rem/ 1fr;
             height: 100vh;
           }
 
-          .landing {
+          .technologies{
             display: flex;
-            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
           }
-          .about{
-            
+
+          .techType{
+            width: 150px;
+            font-size: 1rem;
           }
  
           .floatleft {}

@@ -6,9 +6,9 @@ import React from 'react';
 function ResumePage(){
 
     return(
-        <>
+        <section>
             <h1>Resume</h1>
-        </>
+        </section>
     )
 }
 

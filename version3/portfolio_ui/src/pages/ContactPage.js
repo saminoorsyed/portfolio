@@ -5,10 +5,10 @@ import React from 'react';
 
 export default function BlogPage(){
     return(
-        <>
+        <section>
             <h1>Contact Me </h1>
             <p> Do you have questions, or are you interested in collaborating with me?</p>
             <p> Please reach out!</p>
-        </>
+        </section>
     )
 }
