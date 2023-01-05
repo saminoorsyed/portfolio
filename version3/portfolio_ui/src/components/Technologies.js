@@ -1,6 +1,15 @@
 import React from 'react';
-
-export default function Technologies() {
+import Tech from './Tech'
+export default function Technologies({tech}) {
+  function checkFrontend (genre){
+    return genre === 'frontend'
+  };
+  function checkBackend (genre){
+      return genre === 'backend'
+  };
+  function checkInterests (genre){
+      return genre === 'interests'
+  };
   return (
     <article>
         <h3>Technologies</h3>
@@ -8,24 +17,11 @@ export default function Technologies() {
         <div className='technologies'>
           <div className='techType'>
             <h4> Front End</h4>
-              <div className='card'>
-                <div className='tech'>
-                  <img src=''></img>
-                  <p>Javascript</p>
-                </div>
-                <div className='tech'>
-                  <img src=''></img>
-                  <p>HTML</p>
-                </div>
-                <div className='tech'>
-                  <img src=''></img>
-                  <p>CSS</p>
-                </div>
-                <div className='tech'>
-                  <img src=''></img>
-                  <p>Python</p>
-                </div>
-              </div>
+            {tech.filter(checkFrontend).map((technology, i)=>
+              <Tech
+                  tech = {tech}
+                  key = {i}
+                />)}
           </div>
           <div className='techType'>
             <h4>Back End</h4>
