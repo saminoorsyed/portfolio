@@ -11,11 +11,10 @@ import './App.css';
 import HomePage from './pages/HomePage';
 import BlogPage from './pages/BlogPage';
 import ContactPage from './pages/ContactPage';
-import ResumePage from './pages/ResumePage';
+import ProjectsPage from './pages/ProjectsPage';
 // import components
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
-
 
 export default function App() {
   return (
@@ -23,10 +22,11 @@ export default function App() {
         <Navigation/>
         <main>
             <Routes>
+              <Route index element={<HomePage/>} />
               <Route path = "/" element = {<HomePage/>}/>
-              <Route path = "/blog" element = {<BlogPage/>}/>
               <Route path = "/contact" element = {<ContactPage/>}/>
-              <Route path = "/resume" element = {<ResumePage/>}/>
+              <Route path = "/projects" element = {<ProjectsPage/>}/>
+              <Route path = "/blog/*" element = {<BlogPage/>}/>
             </Routes>
         </main>
         <Footer/>

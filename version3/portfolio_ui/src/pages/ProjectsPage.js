@@ -3,13 +3,10 @@ import React from 'react';
 // import components
 
 
-function ResumePage(){
-
+export default function ProjectsPage(){
     return(
         <section>
             <h1>Resume</h1>
         </section>
     )
 }
-
-export default ResumePage

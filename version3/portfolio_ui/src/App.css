@@ -276,15 +276,34 @@
             height: 100vh;
           }
 
+          #landingTech{
+            width: 700px;
+          }
+
           .technologies{
             display: flex;
-            flex-direction: row;
             flex-wrap: wrap;
+            justify-content: space-around;
           }
 
           .techType{
-            width: 150px;
+            width: 250px;
             font-size: 1rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+          }
+
+          .cardContent{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+          }
+
+          .tech{
+            width: 75px;
+            height: 75px;
           }
  
           .floatleft {}
