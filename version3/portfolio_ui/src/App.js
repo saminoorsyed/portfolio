@@ -15,6 +15,7 @@ import ProjectsPage from './pages/ProjectsPage';
 // import components
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
+import LoginPage from './pages/LoginPage';
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
               <Route path = "/contact" element = {<ContactPage/>}/>
               <Route path = "/projects" element = {<ProjectsPage/>}/>
               <Route path = "/blog/*" element = {<BlogPage/>}/>
+              <Route path = "/loginSignup" element = {<LoginPage/>}/>
             </Routes>
         </main>
         <Footer/>

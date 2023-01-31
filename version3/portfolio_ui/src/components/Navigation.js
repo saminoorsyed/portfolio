@@ -8,6 +8,7 @@ function Navigation() {
         <Link to="../blog"> Blog </Link>
         <Link to= "../projects"> Projects </Link>
         <Link to= "../contact"> Contact </Link>
+        <Link to= "../loginSignup"> Login/Signup</Link>
     </nav>
   );
 }

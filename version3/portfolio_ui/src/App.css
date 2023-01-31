@@ -102,9 +102,7 @@
             article {
               display: flex;
               flex-direction: column;
-              border-width: 500px;
               border-bottom: solid 2px #1e293b;
-              height: 500px;
               max-width: 850px;
               min-width: 500px;
             }
@@ -305,7 +303,7 @@
 
           .tech{
             width: 75px;
-            height: 75px;
+            height: 100px;
           }
 
           .artContainer{
@@ -339,14 +337,15 @@
             border:#1e293b solid 2px;
             border-radius: 7px;
             height: 400px;
+            width: 550px;
           }
 
           .projectGenre{
             display: flex;
-            gap: 10px;
+            gap: 15px;
             border:#1e293b solid 2px;
             border-radius: 7px;
-            flex-wrap: wrap;
+            overflow-x: scroll;
           }
 
  

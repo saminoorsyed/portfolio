@@ -23,11 +23,27 @@ export default function ProjectsPage(){
                             <img src='../images/dummy.jpg'></img>
                             <p>dummy project description</p>
                         </div>
+                        <div className='projectCard'>
+                            <img src='../images/dummy.jpg'></img>
+                            <p>dummy project description</p>
+                        </div>
+                        <div className='projectCard'>
+                            <img src='../images/dummy.jpg'></img>
+                            <p>dummy project description</p>
+                        </div>
                     </div>
                 </div>
                 <div>
                     <h3>Extras</h3>
                     <div className='projectGenre'>
+                        <div className='projectCard'>
+                            <img src='../images/dummy.jpg'></img>
+                            <p>dummy project description</p>
+                        </div>
+                        <div className='projectCard'>
+                            <img src='../images/dummy.jpg'></img>
+                            <p>dummy project description</p>
+                        </div>
                         <div className='projectCard'>
                             <img src='../images/dummy.jpg'></img>
                             <p>dummy project description</p>
