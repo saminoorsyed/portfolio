@@ -332,6 +332,23 @@
 
           }
 
+          .projectsContainer{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            border:#1e293b solid 2px;
+            border-radius: 7px;
+            height: 400px;
+          }
+
+          .projectGenre{
+            display: flex;
+            gap: 10px;
+            border:#1e293b solid 2px;
+            border-radius: 7px;
+            flex-wrap: wrap;
+          }
+
  
           .floatleft {}
           .center-middle {}
