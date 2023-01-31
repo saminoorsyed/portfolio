@@ -19,13 +19,73 @@ export default function BlogPage(){
             </h1>
             <BlogNavigation/>
             <article>
-                <Routes>
-                    <Route index element={<AllArticles/>} />
-                    <Route path ="/blog/all" element = {<AllArticles/>}/>
-                    <Route path ="/blog/blogAlgorithms" element = {<Algorithms/>}/>
-                    <Route path ="/blog/blogProjects" element = {<Projects/>}/>
-                    <Route path = "/blog/blogExtras" element = {<Extras/>}/>
-                </Routes>
+                <div className="artContainer">
+                    <article className='articles'>
+                        <Routes>
+                            <Route index element={<AllArticles/>} />
+                            <Route path ="/blog" element = {<AllArticles/>}/>
+                            <Route path ="/blog/blogAlgorithms" element = {<Algorithms/>}/>
+                            <Route path ="/blog/blogProjects" element = {<Projects/>}/>
+                            <Route path = "/blog/blogExtras" element = {<Extras/>}/>
+                            <Route path ="/blog/blogAll" element = {<AllArticles/>}/>
+                        </Routes>
+                    </article>
+                    <form className='blogSearch'>
+                        <fieldset>
+                        <label htmlFor="search">Search terms</label>
+                        <input
+                            type="text" 
+                            id="search" />
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Advanced Options</legend>
+                        <ul>
+                            <li>
+                                
+                                <label htmlFor='title'>
+                                    <input
+                                        type="checkbox"
+                                        id = 'title'/>
+                                    Title
+                                </label>
+                            </li>
+                            <li>
+                                <label htmlFor="text">
+                                <input
+                                    type="checkbox"
+                                    id = "text"/>
+                                    Text
+                                </label>
+                            </li>
+                            <li>
+                                <label htmlFor="algorithms">
+                                <input
+                                    type="checkbox"
+                                    id = "algorithms"/>
+                                    Algorithms
+                                </label>
+                            </li>
+                            <li>
+                                <label htmlFor = "projects">
+                                <input
+                                    type="checkbox"
+                                    id = "projects"/>
+                                    Projects
+                                </label>
+                            </li>
+                            <li>
+                                <label htmlFor = "extras">
+                                <input
+                                    type="checkbox"
+                                    id = "Extras"/>
+                                    Extras
+                                </label>
+                            </li>
+                        </ul>
+                        </fieldset>
+                    </form>
+                </div>
             </article>
         </section>
   );
