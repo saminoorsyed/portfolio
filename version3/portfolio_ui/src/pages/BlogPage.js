@@ -32,10 +32,11 @@ export default function BlogPage(){
                     </article>
                     <form className='blogSearch'>
                         <fieldset>
-                        <label htmlFor="search">Search terms</label>
+                        <label htmlFor="search">Find a blog quickly by searching key terms here!</label>
                         <input
                             type="text" 
-                            id="search" />
+                            id="search" 
+                            placeholder='ex: react-router-dom'/>
                         </fieldset>
 
                         <fieldset>

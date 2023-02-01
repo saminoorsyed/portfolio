@@ -6,7 +6,7 @@ export default function Technologies() {
         {/* div to contain all tech cards which contain each tech will connect to database soon */}
         <div className='technologies'>
           <div className='techType'>
-            <h4> WebDev</h4>
+            <h4> Skills </h4>
             <div className='cardContent'>
 
               <div className='tech'>
@@ -58,13 +58,13 @@ export default function Technologies() {
           </div>
 
           <div className='techType'>
-            <h4>Interests</h4>
+            <h4>Goals</h4>
             <div className='cardContent'>
               <p>
-              I hope to build real world products and contribute to high level decision making. To that end I am interested in the following:
+              I hope to build real world products and contribute to high level decision making. I hope to  To that end I am interested in the following:
               </p>
               <p>
-              Machine Learning, Robotics, Mobile Development, Computer vision, Augmented reality and Virtual reality.
+                Artificial Intelligence, Computer vision, Virtual and Augmented reality.
               </p>
             </div>
           </div>
