@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400&display=swap');
+/* font -family: 'Dosis', sans-serif; */
+/* normalize */
+@import '../node_modules/modern-normalize/modern-normalize.css';
+
+
+
+.application{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-position: center;
+    font-family: 'Roboto Mono', monospace, Arial, Helvetica, sans-serif;
+    background-color: #d4e3d5;
+    font-size: 1.2rem;
+}     
+:root {
+/* color pallet is slate from tailwind color palettes */
+--main-color:#C9E4CA;
+--header-footer-color: #C9E4CA;
+--mid-color: #55828B;
+--font-color: #3B6064;
+--border-color: #364958;
+--font:'Andika', sans-serif, 'Courier New', Courier, monospace, Arial, Helvetica, sans-serif;
+}
+
+nav{
+    display: flex;
+    gap: 20px;
+    height: 40px;
+    padding: 15px
+}
+
+nav a {
+    font-size: 1.3rem;
+    transition: 0.5s ease;
+}
+
+nav a:hover {
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin: 100px;
+}
+
+article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:20px;
+}
+
+.landing{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    height: 300px;
+}
+
+.technologies{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+
+/* about header div */
+
+.about> h2{
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.description> h3 {
+    font-weight: 600;
+}
+
+.landingTech> h2{
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+/* tech card organization */
+
+.techType{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 25px;
+}
+
+.techType> h4{
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.cardContent{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 300px;
+    text-align: center;
+}
+
+/* to organize the blog search */
+
+.blogContainer{
+    width: 700px;
+}
+.blogSearch{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.blogSearch>fieldset{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
