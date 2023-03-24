@@ -12,14 +12,16 @@ const CreatePostPage = () => {
   const [genre, setGenre]       = useState("");
   const [pic, setPic]           = useState();
   const [loading, setLoading]   = useState(false);
+  const [user, setUser]         = useState({})
   const navigate = useNavigate();
   const toast = useToast();
   
   useEffect(()=> {
-        const user = JSON.parse(localStorage.getItem("userInfo"))
+        setUser(JSON.parse(localStorage.getItem("userInfo")))
+        console.log(user)
         if (user.author){
           setIsAuthor(true);
-          setAuthor(user.name);
+          setAuthor(user._id);
         }
     },[navigate])
     
@@ -83,6 +85,7 @@ const CreatePostPage = () => {
             const config = {
                 headers:{
                     "Content-type": "application/json",
+                    Authorization: `Bearer ${user.token}`,
                 },
             };
             console.log("waiting for response")

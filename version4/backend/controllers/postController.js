@@ -51,7 +51,7 @@ const allPosts = asyncHandler(async(req, res) =>{
             ],
         }:{};
 
-    const posts = await Post.find(keyword).findIndex(_id)
+    const posts = await Post.find(keyword)
     res.send(posts);
 });
 
