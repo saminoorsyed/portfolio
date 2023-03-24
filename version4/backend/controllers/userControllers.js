@@ -9,16 +9,17 @@ const registerUser = asyncHandler(async(req, res) =>{
     const {name, email, password, pic} = req.body;
     // throw an error if any parts of the body are missing
     if (!name || !email || !password){
-        resizeBy.status(400);
+        res.status(400);
         throw new Error("Please enter all the Fields");
-    }
+    };
     
     const userExists = await User.findOne({email});
-    // if no user is found with that email, throw an error
+    // if a user is found with that email, throw an error
     if (userExists){
         res.status(400);
         throw new Error("User already exists");
-    }
+    };
+
     // import User Model from schema
     const user = await User.create({
         name,
@@ -53,14 +54,15 @@ const authUser =asyncHandler(async(req,res) => {
             _id: user._id,
             name: user.name,
             email: user.email,
-            pic: user.pic, 
+            pic: user.pic,
+            author: user.author, 
             token: generateToken(user._id)
         })
     }else {
         res.status(400);
         throw new Error("Unable to find user in the database");
     };
-})
+});
 
 //  /api/users?search=email (to search other users for future use)
 const allUsers = asyncHandler(async(req,res) =>{

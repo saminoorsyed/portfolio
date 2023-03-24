@@ -1,5 +1,5 @@
 "use strict"; 
-// import depenencies
+// import dependencies
 const express = require('express');
 const { application } = require('express');
 const dotenv = require('dotenv');
@@ -9,6 +9,7 @@ const colors = require('colors'); //makes listening output stand out
 const connectDB = require('./config/db');
 // routes
 const userRoutes = require('./routes/userRoutes');
+const postRoutes = require('./routes/postRoutes');
 // middleware
 const {notFound, errorHandler} = require('./middleware/middlewareErrors');
 
@@ -26,7 +27,9 @@ app.get('/', (req, res) =>{
 
 app.use('/api/user', userRoutes);
 // app.use('/api/blog', blogRoutes)
+app.use('/api/posts', postRoutes);
 
+// error routes
 app.use(notFound);
 app.use(errorHandler);
 

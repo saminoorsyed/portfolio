@@ -7,7 +7,6 @@ import Login from '../components/authentication/Login';
 
 const RegisterPage = () => {
   return (
-    
       <Container width="600px" centerContent>
         <Box
         padding= {4}
@@ -33,7 +32,6 @@ const RegisterPage = () => {
           </Tabs>
         </Box>
       </Container>
-
   )
 };
 

@@ -8,13 +8,13 @@ export default function About() {
         <p> Outside of the time that I spend studying at my desk, I enjoy a bit of creative writing, running, and fiddling around on my guitar.</p>
         <h2> Education </h2>
         <div className= "description" >
-          <h3>Current Oregon State coursework:</h3>
-          <p> Intro to programming 1 & 2, Discrete structures, Data Structures, Algorithms, Computer Architecture, Web Development, software Engineering 1, Databases</p>
+          <h3>Oregon State University:</h3>
+          <p> Intro to programming 1 & 2, Discrete structures, Data Structures, Algorithms, Computer Architecture, Web Development, software Engineering 1, Databases, Computer Networks .</p>
         </div>
 
         <div className= "description" >
           <h3> Current Self Study:</h3>
-          <p> The Odin Project: A self paced full stack boot camp focusing on the use of Mongo DB, Express JS, React, and NPM</p>
+          <p> The Odin Project: A self paced full stack boot camp focusing on the use of Mongo DB, Express JS, React, and Node JS</p>
           <p> Readings: Fluent Python, Modern JavaScript for the impatient Relational database design and implementation, Handbook of software Engineering Methods </p>
         </div>
 

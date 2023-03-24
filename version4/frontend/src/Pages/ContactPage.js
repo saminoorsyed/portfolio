@@ -1,10 +1,7 @@
 // import dependencies
 import React, {useEffect, useState} from 'react';
-import axios from 'axios';
-import {useNavigate} from 'react-router-dom'; 
 // import elements from chakra ui
 import { VStack, FormControl, FormLabel, Input, InputGroup, Container, Button, Box, Textarea } from '@chakra-ui/react'
-import { useToast } from '@chakra-ui/react';
 
 const ContactPage = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -16,11 +13,11 @@ const ContactPage = () => {
     },[])
 
 
-    const handleClick = () => {
-    const submitHandler =() => {
+    // const handleClick = () => {
+    // const submitHandler =() => {
 
-    }
-    };
+    // }
+    // };
   return (
     <>
     {isLoggedIn &&

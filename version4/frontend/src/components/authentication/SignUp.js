@@ -10,37 +10,15 @@ import { useToast } from '@chakra-ui/react';
 
 const SignUp = () => {
     const [show, setShow] =useState(false);
-    const [name, setName] = useState();
-    const [email, setEmail] = useState();
-    const [confirmPassword, setConfirmPassword]= useState();
-    const [password, setPassword]= useState();
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [confirmPassword, setConfirmPassword]= useState("");
+    const [password, setPassword]= useState("");
     const [pic, setPic]= useState();
     const [loading, setLoading]= useState(false);
-    const [genClicked, setGenClicked] = useState(false);
     const toast = useToast();
     const navigate = useNavigate();
 
-    const genPass = async(event) => {
-        event.preventDefault();
-        try {
-            const {data} = await axios.get("/api/user/getPass");
-                const pass = data["data"]["passWd"];    
-                setPassword(pass);
-                setConfirmPassword(pass);
-                setGenClicked(true)
-                console.log(password)
-            }catch(error){
-                console.log(error)
-                toast({
-                title: 'Could not generate a password',
-                status: 'warning',
-                duration: 4500,
-                isClosable: true,
-                position: "bottom",
-                });
-                return;
-            }
-    }
     const handleClick = () => setShow(!show);
     const postDetails = (pics)=>{
         setLoading(true);
@@ -127,7 +105,7 @@ const SignUp = () => {
             });
             localStorage.setItem('userInfo', JSON.stringify(data));
             setLoading(false);
-            navigate('/chats');
+            navigate('/');
         } catch (error) {
             toast({
                 title: "An error occurred!",
@@ -165,10 +143,7 @@ const SignUp = () => {
                     onChange={(e)=> setPassword(e.target.value)}>
 
                 </Input>
-                <InputRightElement width="15rem">
-                    <Button height="1.75rem" size = "sm" onClick = {(e)=>genPass(e)}>
-                        generate password
-                    </Button>
+                <InputRightElement width="4.5rem">
                     <Button height="1.75rem" size = "sm" onClick = {handleClick}>
                         {show ? "Hide": "Show"}
                     </Button>
