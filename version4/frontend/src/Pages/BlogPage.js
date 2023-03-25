@@ -13,8 +13,8 @@ import AllArticles from '../components/blogComponents/BlogAll';
 
 export default function BlogPage(){
     return(
-        <section>
-            <h1>
+        <section style={{gap:"0px"}}>
+            <h1 style={{fontSize: "2.5rem"}}>
                 The Blog
             </h1>
             <article>
@@ -30,64 +30,7 @@ export default function BlogPage(){
                             <Route path ="blog/blogAll" element = {<AllArticles/>}/>
                         </Routes>
                     </article>
-                    <form className='blogSearch'>
-                        <fieldset>
-                        <label htmlFor="search">searching key terms here!</label>
-                        <input
-                            type="text" 
-                            id="search" 
-                            placeholder='ex: react-router-dom'/>
-                        </fieldset>
-
-                        <fieldset>
-                            <legend>Advanced Options</legend>
-                        <ul>
-                            <li>
-                                
-                                <label htmlFor='title'>
-                                    <input
-                                        type="checkbox"
-                                        id = 'title'/>
-                                    Title
-                                </label>
-                            </li>
-                            <li>
-                                <label htmlFor="text">
-                                <input
-                                    type="checkbox"
-                                    id = "text"/>
-                                    Text
-                                </label>
-                            </li>
-                            <li>
-                                <label htmlFor="algorithms">
-                                <input
-                                    type="checkbox"
-                                    id = "algorithms"/>
-                                    Algorithms
-                                </label>
-                            </li>
-                            <li>
-                                <label htmlFor = "projects">
-                                <input
-                                    type="checkbox"
-                                    id = "projects"/>
-                                    Projects
-                                </label>
-                            </li>
-                            <li>
-                                <label htmlFor = "extras">
-                                <input
-                                    type="checkbox"
-                                    id = "Extras"/>
-                                    Extras
-                                </label>
-                            </li>
-                        </ul>
-                        </fieldset>
-                    </form>
                 </div>
-              <p>backend still under construction</p>
             </article>
         </section>
   );

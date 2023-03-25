@@ -10,6 +10,7 @@ const CreatePostPage = () => {
   const [title, setTitle]       = useState("");
   const [content, setContent]   = useState("");
   const [genre, setGenre]       = useState("");
+  const [authorName, setAuthorName] = useState("");
   const [pic, setPic]           = useState();
   const [loading, setLoading]   = useState(false);
   const [user, setUser]         = useState({})
@@ -17,13 +18,18 @@ const CreatePostPage = () => {
   const toast = useToast();
   
   useEffect(()=> {
-        setUser(JSON.parse(localStorage.getItem("userInfo")))
-        console.log(user)
-        if (user.author){
-          setIsAuthor(true);
-          setAuthor(user._id);
+        async function loadUser (){
+            const userObj = JSON.parse(localStorage.getItem("userInfo"));
+            setUser(userObj);
+            // avoid async state set for setting author info by using userObj 
+            if (userObj.author){
+                setIsAuthor(true);
+                setAuthor(userObj._id);
+                setAuthorName(userObj.name);
+            }
         }
-    },[navigate])
+        loadUser();
+    },[])
     
     const postDetails = (pics)=>{
         setLoading(true);
@@ -69,8 +75,7 @@ const CreatePostPage = () => {
     
     const submitHandler= async()=>{
         setLoading(true);
-        console.log({author, title, content, genre})
-        if(!author || !title || !content || !genre){
+        if(!author || !title || !content){
             toast({
                 title: "Please fill in al the Fields",
                 status: "warning",
@@ -91,7 +96,7 @@ const CreatePostPage = () => {
             console.log("waiting for response")
             await axios.post(
                 "/api/posts",
-                {title, content, author, genre, pic},
+                {title, content, author, genre, pic, authorName},
                 config
                 );
             

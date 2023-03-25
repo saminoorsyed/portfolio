@@ -6,7 +6,7 @@ const Post = require("../models/postModel");
 
 const createPost = asyncHandler(async(req, res)=> {
     // destructure contents of the body
-    const {title, content, pic, author, genre } = req.body;
+    const {title, content, pic, author, genre, authorName } = req.body;
     // throw an error if any necessary parts of the body are missing
     if (!title || !content || !author){
         res.status(400);
@@ -21,14 +21,14 @@ const createPost = asyncHandler(async(req, res)=> {
         throw new Error("A post with that title already exists")
     };
 
-    // import Post Model from schema
-
+    // create new post with post schema method
     const post = await Post.create({
         title,
         content,
         genre,
         pic,
         author,
+        authorName
     });
 
     if (post){
@@ -40,24 +40,18 @@ const createPost = asyncHandler(async(req, res)=> {
     };
 });
 
-// search post titles or content
-const allPosts = asyncHandler(async(req, res) =>{
+
+
+// send posts by genre
+const postsByGenre = asyncHandler(async(req,res) =>{
     const keyword = req.query.search
         ? {
-            $or: [
-                {title:     {$regex: req.query.search, $options: 'i'}},
-                {content:   {$regex: req.query.search, $options: 'i'}},
-                {genre:     {$regex: req.query.search, $options: 'i'}}
-            ],
+            genre:{$regex: req.query.search, $options: 'i'}
         }:{};
-
     const posts = await Post.find(keyword)
-    res.send(posts);
-});
-
-const isAuthor =asyncHandler(async(req,res) => {
-    res.send("working");
+    res.send(posts)
 });
 
 
-module.exports = {createPost, allPosts, isAuthor}
+
+module.exports = {createPost, postsByGenre}
