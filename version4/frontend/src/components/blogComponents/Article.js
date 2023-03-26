@@ -19,9 +19,9 @@ const Article = ({title, content, author, pic}) => {
 
     return (
     <>
-    <h1>{title}</h1>
+    <h1 style={{fontWeight: "700", fontSize:"2.5rem"}}>{title}</h1>
     <p> by {author}</p>
-    <Box boxSize='md'><Image src={pic}/></Box>
+    <Box boxSize='cover'><Image src={pic}/></Box>
     {/* look into using a headless cms system */}
     <div dangerouslySetInnerHTML={{__html: html}}/>
     </>

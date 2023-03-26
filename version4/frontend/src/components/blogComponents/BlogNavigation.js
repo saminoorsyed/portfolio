@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function BlogNavigation() {
   return (
-    <nav className=''>
+    <nav className='bogNav'>
         <Link to="/blog"> All </Link>
         <Link to="blog/blogAlgorithms"> Algorithms </Link>
         <Link to="blog/blogProjects"> Projects </Link>

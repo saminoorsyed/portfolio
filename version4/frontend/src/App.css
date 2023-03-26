@@ -125,13 +125,6 @@ article{
 .blogContainer{
     width: 700px;
 }
-.blogSearch{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-.blogSearch>fieldset{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+.blogNav{
+    box-shadow: 0 2px 0 5px black;
 }
