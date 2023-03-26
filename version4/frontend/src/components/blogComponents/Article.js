@@ -2,7 +2,7 @@ import { Image, Box } from '@chakra-ui/react'
 import React, {useEffect, useState} from 'react'
 import DomPurify from "dompurify";
 
-const Article = ({title, content, author, pic}) => {
+const Article = ({title, content, author, pic, date}) => {
     const [html, setHtml] = useState("");
     // sanitize html content before rendering
     useEffect(()=>{
@@ -20,7 +20,7 @@ const Article = ({title, content, author, pic}) => {
     return (
     <>
     <h1 style={{fontWeight: "700", fontSize:"2.5rem"}}>{title}</h1>
-    <p> by {author}</p>
+    <p> by {author} on {date.slice(0,10)}</p>
     <Box boxSize='cover'><Image src={pic}/></Box>
     {/* look into using a headless cms system */}
     <div dangerouslySetInnerHTML={{__html: html}}/>
