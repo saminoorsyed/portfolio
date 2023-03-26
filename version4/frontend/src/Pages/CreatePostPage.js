@@ -155,9 +155,9 @@ const CreatePostPage = () => {
                           ></Input>
                     </FormControl>
                     <FormControl>
-                        <FormLabel>Text content*</FormLabel>
+                        <FormLabel>HTML Content*</FormLabel>
                             <Textarea
-                            placeholder='enter text content for post here'
+                            placeholder='Enter html content for post here'
                             onChange= {(e)=>setContent(e.target.value)}>
                             </Textarea>
                     </FormControl>
