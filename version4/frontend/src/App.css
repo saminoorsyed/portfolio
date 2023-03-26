@@ -123,5 +123,5 @@ article{
 /* to organize the blog search */
 
 .blogContainer{
-    width: 700px;
+    max-width: 1000px;
 }

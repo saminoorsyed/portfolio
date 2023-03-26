@@ -1,6 +1,6 @@
 import React from 'react'
 // import elements from chakra UI
-import { Box, Container, Text, Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
+import { Box, Container, Text, Tabs, TabList, TabPanels, Tab, TabPanel, Heading } from '@chakra-ui/react';
 // import components
 import SignUp from '../components/authentication/SignUp';
 import Login from '../components/authentication/Login';
