@@ -10,7 +10,7 @@ const connectDB = require('./config/db');
 // routes
 const userRoutes = require('./routes/userRoutes');
 const postRoutes = require('./routes/postRoutes');
-const contactRoutes = require('./routes/contactRoutes');
+const messageRoutes = require('./routes/messageRoutes');
 
 // middleware
 const {notFound, errorHandler} = require('./middleware/middlewareErrors');
@@ -30,7 +30,7 @@ app.get('/', (req, res) =>{
 // website functionality
 app.use('/api/user', userRoutes);
 app.use('/api/posts', postRoutes);
-app.use('./api/contact', contactRoutes);
+app.use('/api/messages', messageRoutes);
 
 // error routes
 app.use(notFound);

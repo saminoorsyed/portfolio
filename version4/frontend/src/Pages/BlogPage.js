@@ -9,14 +9,17 @@ import Article from '../components/blogComponents/Article';
 export default function BlogPage(){
     const [articles, setArticles] = useState([]);
     const [loading, setLoading]   = useState(true);
-    const [genre, setGenre]       = useState("")
-    const [query, setQuery] = useState('')
+    const [genre, setGenre]       = useState("");
+    const [query, setQuery]       = useState("");
+    
     function filterItems(items, query){
         return items.filter(item => item.title.includes(query))
     }
+    
     function handleChange(e){
         setQuery(e.target.value);
     }
+    
     const results = filterItems(articles, query)
     
     useEffect(()=>{
@@ -53,7 +56,7 @@ export default function BlogPage(){
                             <Input  id="filter_query" 
                                     type="text"
                                     placeholder='start typing here'
-                                    ocusBorderColor='pink.400'
+                                    focusBorderColor='pink.400'
                                     value={query} 
                                     onChange={handleChange} 
                                     borderWidth = "1px"

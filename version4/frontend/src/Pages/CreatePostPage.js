@@ -1,4 +1,4 @@
-import { Box, Button, Container, FormControl, FormLabel, Input, Textarea, VStack, useToast, tokenToCSSVar } from '@chakra-ui/react'
+import { Box, Button, Container, FormControl, FormLabel, Input, Textarea, VStack, useToast } from '@chakra-ui/react'
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
@@ -14,8 +14,8 @@ const CreatePostPage = () => {
   const [pic, setPic]           = useState();
   const [loading, setLoading]   = useState(false);
   const [user, setUser]         = useState({})
-  const navigate = useNavigate();
-  const toast = useToast();
+  const navigate                = useNavigate();
+  const toast                   = useToast();
   
   useEffect(()=> {
         async function loadUser (){

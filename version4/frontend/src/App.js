@@ -6,6 +6,7 @@ import {
 // import app components
 import Navigation from './components/blog/Navigation'
 // import main pages
+import MessagesPage from './Pages/MessagesPage'
 import RegisterPage from './Pages/RegisterPage';
 import HomePage from './Pages/HomePage'
 import ContactPage from './Pages/ContactPage';
@@ -23,6 +24,7 @@ export default function App() {
         <Routes>
           <Route index                element = {<HomePage/>} />
           <Route path = "/"           element = {<HomePage/>}/>
+          <Route path='/messages'     element = {<MessagesPage/>}/>
           <Route path = "/contact"    element = {<ContactPage/>}/>
           <Route path = "/projects"   element = {<ProjectsPage/>}/>
           <Route path = "/blog/*"     element = {<BlogPage/>}/>
