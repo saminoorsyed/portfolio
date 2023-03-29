@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const messageSchema = mongoose.Schema({
-    header:     {type: String, required: true, unique: true},
+    header:     {type: String, required: true},
     content:    {type: String, required: true},
     name:       {type: String, required: true},
     email:      {type: String, required: true},

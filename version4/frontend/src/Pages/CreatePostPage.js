@@ -93,7 +93,6 @@ const CreatePostPage = () => {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-            console.log("waiting for response")
             await axios.post(
                 "/api/posts",
                 {title, content, author, genre, pic, authorName},

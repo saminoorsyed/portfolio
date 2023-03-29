@@ -1,24 +1,61 @@
 // import dependencies
 import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 // import elements from chakra ui
-import { VStack, FormControl, FormLabel, Input, InputGroup, Container, Button, Box, Textarea, Heading } from '@chakra-ui/react'
+import { VStack, FormControl, FormLabel, Input, Container, Button, Box, Textarea, useToast } from '@chakra-ui/react'
 
 const ContactPage = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoggedIn, setIsLoggedIn]   = useState(false);
+    const [header, setHeader]           = useState("");
+    const [content, setContent]         = useState("");
+    const [name, setName]               = useState("");
+    const [email, setEmail]             = useState("");
+    const [user, setUser]               = useState({});
+    const toast                         = useToast();
     
     useEffect(()=> {
-        const user = JSON.parse(localStorage.getItem("userInfo"))
-        if (user){ setIsLoggedIn(true)}
-        else{setIsLoggedIn(false)}
-    },[])
+        const userObj = JSON.parse(localStorage.getItem("userInfo"))
+        setUser(userObj);
+        if (userObj){ 
+            setIsLoggedIn(true)
+            setUser(userObj)
+            setName(userObj.name)
+            setEmail(userObj.email)
+        }
+    },[]);
 
-
-    // const handleClick = () => {
-    // const submitHandler =() => {
-
-    // }
-    // };
-  return (
+    const submitHandler =async() => {
+        if (!header || !content || !name ||!email){
+            toast({
+                title: "Please fill out everything in the form!",
+                status: "warning",
+                duration: 4500,
+                isClosable: true,
+                position:"bottom",
+            });
+            return;
+        }
+        const config = {
+            headers:{
+                    "Content-type": "application/json",
+                    Authorization: `Bearer ${user.token}`,
+                },
+            };
+            await axios.post(
+                "/api/messages",
+                {header, content, name, email},
+                config
+                );
+            toast({
+                title: "your message has been sent!",
+                status: "success",
+                duration: 4500,
+                isClosable: true,
+                position:"bottom",
+            });
+            return;
+    };
+    return (
     <>
     {isLoggedIn &&
         <Container
@@ -39,19 +76,22 @@ const ContactPage = () => {
                 <VStack spacing= '5px' color="black">
                     <FormControl>
                         <FormLabel>Header*</FormLabel>
-                        <Input>
+                        <Input
+                        onChange={(e)=>setHeader(e.target.value)}>
                         </Input>
                     </FormControl>
                     <FormControl>
                         <FormLabel>Message*</FormLabel>
-                            <Textarea>
-                            </Textarea>
+                            <Textarea
+                            onChange={(e)=>setContent(e.target.value)}
+                            ></Textarea>
 
                     </FormControl>
                     <Button
                         colorScheme="blue"
                         width="100%"
                         style = {{marginTop:15}}
+                        onClick = {submitHandler}
                         >Send Message
                     </Button>
                 </VStack>

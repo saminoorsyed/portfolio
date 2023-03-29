@@ -44,14 +44,28 @@ const createPost = asyncHandler(async(req, res)=> {
 
 // send posts by genre
 const postsByGenre = asyncHandler(async(req,res) =>{
-    const keyword = req.query.search
-        ? {
-            genre:{$regex: req.query.search, $options: 'i'}
-        }:{};
-    const posts = await Post.find(keyword)
-    res.send(posts)
+    try{
+        const keyword = req.query.search
+            ? {
+                genre:{$regex: req.query.search, $options: 'i'}
+            }:{};
+        const posts = await Post.find(keyword)
+        res.status(200).send(posts)
+    }catch(error){
+        res.status(400)
+        throw new Error("unable to retrieve posts from database")
+    }
 });
 
+const deletePost = asyncHandler(async(req, res)=>{
+    try{
+        const {_id}= req.body;
+        await Post.deleteOne({ _id:_id });
+        res.status(200).send("blog post deleted")
+    }catch(error){
+        res.status(400);
+        throw new Error("unable to delete post in database")
+    }
+});
 
-
-module.exports = {createPost, postsByGenre}
+module.exports = {createPost, postsByGenre, deletePost}

@@ -11,7 +11,26 @@ export default function BlogPage(){
     const [loading, setLoading]   = useState(true);
     const [genre, setGenre]       = useState("");
     const [query, setQuery]       = useState("");
+    const [delMessId, setDelMessId]= useState(null)
     
+    const deleteHandler = async(id)=>{
+        const userObj = JSON.parse(localStorage.getItem("userInfo"));
+        if (userObj && userObj.author){
+          const config = {
+            headers:{
+              "Content-type": "application/json",
+              Authorization: `Bearer ${userObj.token}`
+            },
+            data: {
+              '_id':id
+            }
+          }
+          const response = await axios.delete(`/api/posts`, config);
+          alert(response.data)
+          setDelMessId(id)
+        }
+     }
+
     function filterItems(items, query){
         return items.filter(item => item.title.includes(query))
     }
@@ -28,8 +47,9 @@ export default function BlogPage(){
         setArticles(data);
         setLoading(false);
     }
+
     getArticles();
-    },[genre]);
+    },[genre, delMessId]);
     return(
         <section style={{gap:"0px"}}>
             <h1 style={{fontSize: "2.5rem"}}>
@@ -67,7 +87,7 @@ export default function BlogPage(){
                 </Container>
                     <article className='blog'>
                             {loading && <Button isLoading = {loading}>Loading articles now...</Button>}
-                            {!loading && results.map((article)=>{
+                            {!loading && results.map((article, i)=>{
                               return(
                               <Article
                                 title = {article.title}
@@ -75,7 +95,9 @@ export default function BlogPage(){
                                 author = {article.authorName}
                                 pic = {article.pic}
                                 date = {article.createdAt}
-                                key = {article._id}
+                                _id = {article._id}
+                                deleteHandler = {deleteHandler}
+                                key = {i}
                                   />
                               )
                             })}
