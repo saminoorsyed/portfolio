@@ -1,6 +1,5 @@
 "use strict"; 
 const asyncHandler = require("express-async-handler");
-const axios = require("axios");
 // import model
 const Post = require("../models/postModel");
 
@@ -57,6 +56,37 @@ const postsByGenre = asyncHandler(async(req,res) =>{
     }
 });
 
+const updatePost = asyncHandler(async (req, res) => {
+  try {
+    const { id, title, content, pic, author, genre, authorName } = req.body;
+    const updatedPost = await Post.findByIdAndUpdate(
+      id,
+      {
+        $set: {
+          title: title || undefined,
+          content: content || undefined,
+          pic: pic || undefined,
+          author: author || undefined,
+          genre: genre || undefined,
+          authorName: authorName || undefined,
+        },
+      },
+      { new: true }
+    );
+
+    if (updatedPost) {
+      res.status(200).send(updatedPost);
+    } else {
+      res.status(404);
+      throw new Error("Post not found");
+    }
+  } catch (error) {
+    res.status(400);
+    throw new Error("Unable to update post in database");
+  }
+});
+
+
 const deletePost = asyncHandler(async(req, res)=>{
     try{
         const {_id}= req.body;
@@ -68,4 +98,4 @@ const deletePost = asyncHandler(async(req, res)=>{
     }
 });
 
-module.exports = {createPost, postsByGenre, deletePost}
+module.exports = {createPost, postsByGenre, deletePost, updatePost};
