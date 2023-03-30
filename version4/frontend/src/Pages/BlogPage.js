@@ -11,7 +11,8 @@ export default function BlogPage(){
     const [loading, setLoading]   = useState(true);
     const [genre, setGenre]       = useState("");
     const [query, setQuery]       = useState("");
-    const [delMessId, setDelMessId]= useState(null)
+    const [delMessId, setDelMessId]= useState(null);
+    const [updated, setUpdated]     =useState([]);
     
     const deleteHandler = async(id)=>{
         const userObj = JSON.parse(localStorage.getItem("userInfo"));
@@ -49,7 +50,7 @@ export default function BlogPage(){
     }
 
     getArticles();
-    },[genre, delMessId]);
+    },[genre, delMessId, updated]);
     return(
         <section style={{gap:"0px"}}>
             <h1 style={{fontSize: "2.5rem"}}>
@@ -96,6 +97,8 @@ export default function BlogPage(){
                                 pic = {article.pic}
                                 date = {article.createdAt}
                                 _id = {article._id}
+                                genre = {article.genre}
+                                setUpdated = {setUpdated}
                                 deleteHandler = {deleteHandler}
                                 key = {i}
                                   />
