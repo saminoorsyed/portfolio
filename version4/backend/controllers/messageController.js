@@ -1,6 +1,5 @@
 "use strict"; 
 const asyncHandler = require("express-async-handler");
-const axios = require("axios");
 // import model
 const Message = require("../models/messageModel");
 

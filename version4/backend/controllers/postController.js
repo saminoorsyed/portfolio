@@ -93,7 +93,7 @@ const deletePost = asyncHandler(async(req, res)=>{
         await Post.deleteOne({ _id:_id });
         res.status(200).send("blog post deleted")
     }catch(error){
-        res.status(400);
+        res.status(500);
         throw new Error("unable to delete post in database")
     }
 });
