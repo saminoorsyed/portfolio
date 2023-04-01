@@ -14,53 +14,11 @@ const SignUp = () => {
     const [email, setEmail] = useState("");
     const [confirmPassword, setConfirmPassword]= useState("");
     const [password, setPassword]= useState("");
-    const [pic, setPic]= useState();
     const [loading, setLoading]= useState(false);
     const toast = useToast();
     const navigate = useNavigate();
 
     const handleClick = () => setShow(!show);
-    const postDetails = (pics)=>{
-        setLoading(true);
-        if (pics === undefined){
-            toast({
-            title: 'Please choose a profile picture!',
-            status: 'warning',
-            duration: 4500,
-            isClosable: true,
-            position: "bottom",
-            });
-            return;
-        }
-        if (pics.type === "image/jpeg"|| pics.type === "image/png"){
-            const data = new FormData();
-            data.append("file", pics);
-            data.append("upload_preset", "chat-away");
-            data.append("cloud_name", "ddl7hegfw");
-            fetch("https://api.cloudinary.com/v1_1/ddl7hegfw/image/upload",{
-                method:"post",
-                body: data,
-            }).then((res) => res.json())
-              .then((data) =>{
-                setPic(data.url.toString());
-                console.log(data.url.toString());
-                setLoading(false);
-              }).catch((err)=>{
-                console.log(err);
-                setLoading(false);
-              });
-        }else {
-            toast({
-                title: "Please select a jpeg or png image file!",
-                status: "warning",
-                duration: 4500,
-                isClosable: true,
-                position:"bottom",
-            });
-            setLoading(false);
-            return;
-        }
-    };
     const submitHandler= async()=>{
         setLoading(true);
         if(!email || !name || !password|| !confirmPassword){
@@ -93,7 +51,7 @@ const SignUp = () => {
             };
             const {data} = await axios.post(
                 "/api/user",
-                {name, email, password, pic},
+                {name, email, password},
                 config
                 );
             toast({
@@ -167,15 +125,6 @@ const SignUp = () => {
                     </Button>
                 </InputRightElement>
             </InputGroup>
-        </FormControl>
-        <FormControl id='pic'>
-            <FormLabel>Upload your picture</FormLabel>
-            <Input
-                type="file"
-                padding={1.5}
-                accept="image/*"
-                onChange={(e)=> postDetails(e.target.files[0])}
-            />
         </FormControl>
         <Button
             colorScheme="blue"

@@ -7,6 +7,6 @@ const {protect} = require("../middleware/authMiddleware");
 router.route('/')
         .post(protect, createComment)
         .get(getCommentsByPost)
-        .delete(protect, deleteCommentById)
+        .delete(protect, deleteCommentById);
 
 module.exports = router;

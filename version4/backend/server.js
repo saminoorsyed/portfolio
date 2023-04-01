@@ -12,6 +12,7 @@ const userRoutes = require('./routes/userRoutes');
 const postRoutes = require('./routes/postRoutes');
 const messageRoutes = require('./routes/messageRoutes');
 const commentRoutes = require('./routes/commentRoutes');
+const projectRoutes = require('./routes/projectRoutes');
 // middleware
 const {notFound, errorHandler} = require('./middleware/middlewareErrors');
 
@@ -32,7 +33,7 @@ app.use('/api/user', userRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/comments', commentRoutes);
-
+app.use('/api/projects', projectRoutes);
 // error routes
 app.use(notFound);
 app.use(errorHandler);

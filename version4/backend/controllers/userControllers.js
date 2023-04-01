@@ -6,7 +6,7 @@ const axios = require('axios');
 const User = require('../models/userModel');
 
 const registerUser = asyncHandler(async(req, res) =>{
-    const {name, email, password, pic} = req.body;
+    const {name, email, password} = req.body;
     // throw an error if any parts of the body are missing
     if (!name || !email || !password){
         res.status(400);
@@ -25,7 +25,6 @@ const registerUser = asyncHandler(async(req, res) =>{
         name,
         email, 
         password,
-        pic,
     });
 
     if (user){
@@ -33,8 +32,7 @@ const registerUser = asyncHandler(async(req, res) =>{
         res.status(201).json({
             _id: user._id,
             name: user.name,
-            email: user.email,
-            pic: user.pic, 
+            email: user.email, 
             token: generateToken(user._id)
         });
     } else {
@@ -54,7 +52,6 @@ const authUser =asyncHandler(async(req,res) => {
             _id: user._id,
             name: user.name,
             email: user.email,
-            pic: user.pic,
             author: user.author, 
             token: generateToken(user._id)
         })

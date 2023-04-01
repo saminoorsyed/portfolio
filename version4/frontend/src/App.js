@@ -13,6 +13,7 @@ import ContactPage from './Pages/ContactPage';
 import ProjectsPage from './Pages/ProjectsPage';
 import BlogPage from './Pages/BlogPage';
 import CreatePostPage from './Pages/CreatePostPage';
+import Footer from './components/blog/Footer';
 
 
 
@@ -32,6 +33,7 @@ export default function App() {
           <Route path = "/createPost" element = {<CreatePostPage/>}/>
         </Routes>
       </main>
+      <Footer/>
     </div>
   );
 }

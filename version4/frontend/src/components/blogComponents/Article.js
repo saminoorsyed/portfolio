@@ -1,56 +1,131 @@
-import { Image, Box, Button } from '@chakra-ui/react'
-import React, {useEffect, useState} from 'react'
+import { Image, Box, Button, Container } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
 import DomPurify from "dompurify";
-import UpdateArticle from './UpdateArticle';
+import UpdateArticle from "./UpdateArticle";
+import Comment from "./Comment";
+import CreateComment from "./CreateComment"
+import axios from "axios";
 
+const Article = ({ title, content, genre, author, pic, date, deleteHandler, setUpdated, _id}) => {
 
-const Article = ({title, content, genre, author, pic, date, deleteHandler, setUpdated, _id}) => {
-    const [html, setHtml]                   = useState("");
-    const [isAuthor, setIsAuthor]           = useState(false);
+    const [html, setHtml] = useState("");
+    const [isAuthor, setIsAuthor] = useState(false);
     const [updateClicked, setUpdateClicked] = useState(false);
-    // sanitize html content before rendering
-    useEffect(()=>{
-        function htmlSanitizer(){
-            try{
-                const sanitizedHtml = DomPurify.sanitize(content)
+    const [comments, setComments] = useState([]);
+    const [showComments, setShowComments] = useState(false);
+    const [user, setUser] = useState({})
+    const [commentChange, setCommentChange] = useState(false)
+    const deleteComment = async(comment_id)=>{
+        try{
+            const config = {
+                headers:{
+                    "Content-type": "application/json",
+                    Authorization: `Bearer ${user.token}`,
+                },
+                data:{
+                    _id:comment_id,
+                }
+        }
+        await axios.delete("api/comments", config)
+        setCommentChange(!commentChange);
+        }catch(error){
+            console.log(error)
+        }
+    }
+  // sanitize html content before rendering
+    useEffect(() => {
+        function htmlSanitizer() {
+            try {
+                const sanitizedHtml = DomPurify.sanitize(content);
                 setHtml(sanitizedHtml);
                 const userObj = JSON.parse(localStorage.getItem("userInfo"));
-                // avoid async state set for setting author info by using userObj 
-                if (userObj && userObj.author){
-                    setIsAuthor(true);
-                }
-            }catch(error){
+                setUser(userObj);
+                if (userObj && userObj.author) setIsAuthor(true);
+                
+            } catch (error) {
                 console.error(error);
             }
         }
-        htmlSanitizer();
-    },[content])
-
-    return (
-    <>
-    {isAuthor && 
-        <div>
-            <Button onClick={()=> deleteHandler(_id)}>Delete Post</Button>
-            <Button onClick={()=> setUpdateClicked(!updateClicked)}>Update Post</Button>
-        </div>
+    htmlSanitizer();
+  }, [content]);
+  useEffect(() => {
+    async function loadComments() {
+      try {
+        const response = await axios.get(`api/comments?post=${_id}`);
+        setComments(response.data);
+      } catch (error) {
+        console.error(error);
+      }
     }
-    {isAuthor && updateClicked &&
+    if (showComments) loadComments();
+  }, [showComments, commentChange]);
+  
+  return (
+    <article className="blogArticle">
+      {isAuthor && (
+        <div>
+          <Button onClick={() => deleteHandler(_id)}>Delete Post</Button>
+          <Button onClick={() => setUpdateClicked(!updateClicked)}>
+            Update Post
+          </Button>
+        </div>
+      )}
+      {isAuthor && updateClicked && (
         <UpdateArticle
-        oldTitle = {title}
-        oldContent = {content}
-        oldGenre = {genre}
-        oldPic = {pic}
-        id = {_id}
-        setUpdated = {setUpdated}
+          oldTitle={title}
+          oldContent={content}
+          oldGenre={genre}
+          oldPic={pic}
+          id={_id}
+          setUpdated={setUpdated}
         />
-    } 
-    <h1 style={{fontWeight: "700", fontSize:"2.5rem"}}>{title}</h1>
-    <p> by {author} on {date.slice(0,10)}</p>
-    <Box boxSize='cover'><Image src={pic}/></Box>
-    {/* look into using a headless cms system */}
-    <div dangerouslySetInnerHTML={{__html: html}}/>
-    </>
-  )
-}
+      )}
+      <h1 style={{ fontWeight: "700", fontSize: "2.5rem" }}>{title}</h1>
+      <p>
+        {" "}
+        by {author} on {date.slice(0, 10)}
+      </p>
+      <Box boxSize="cover">
+        <Image src={pic} />
+      </Box>
+      {/* look into using a headless cms system */}
+      <div dangerouslySetInnerHTML={{ __html: html }} />
+      {showComments ? (
+        <Button onClick={() => setShowComments(!showComments)}>
+          hide comments
+        </Button>
+      ) : (
+        <Button onClick={() => setShowComments(!showComments)}>
+          show comments
+        </Button>
+      )}
+      
+      {(showComments) && ((user)?(
+        <CreateComment
+          post_id={_id}
+          setCommentChange={setCommentChange}
+          commentChange={commentChange}
+          />
+        ):(
+          <p>To leave a comment, you must first log in or sign up.</p>
+        ))}
+      {showComments &&
+        comments.length > 0 &&
+        comments.map((comment, i) => {
+          return (
+            <Comment
+              key={i}
+              deleteComment={deleteComment}
+              comment_id={comment._id}
+              content={comment.content}
+              username={comment.username}
+              date={comment.createdAt}
+              user_id={comment.user_id}
+            />
+          );
+        })}
+    </article>
+  );
+};
 
-export default Article
+export default Article;

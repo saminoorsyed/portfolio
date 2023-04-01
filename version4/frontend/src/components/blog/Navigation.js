@@ -29,14 +29,18 @@ function Navigation() {
     }
   return (
     <nav>
-        <Link to="/"> Home </Link>
-        <Link to="../blog"> Blog </Link>
-        <Link to= "../projects"> Projects </Link>
-        {isAuthor && <Link to= "../Messages"> Messages </Link>}
-        {!isAuthor && <Link to= "../contact"> Contact </Link>}
-        {isAuthor && <Link to= "../createPost"> Create a Post</Link>}
-        {!isLoggedIn && <Link to= "../register"> Login/Signup </Link>}
-        {isLoggedIn && <Button onClick={logoutHandler} colorScheme="green">logout</Button>}
+      <Link to="/"> Home </Link>
+      <Link to="../projects"> Projects </Link>
+      <Link to="../blog"> Blog </Link>
+      {isAuthor && <Link to="../Messages"> Messages </Link>}
+      {!isAuthor && <Link to="../contact"> Contact </Link>}
+      {isAuthor && <Link to="../createPost"> Create a Post</Link>}
+      {!isLoggedIn && <Link to="../register"> Login/Signup </Link>}
+      {isLoggedIn && (
+        <Button onClick={logoutHandler} colorScheme="green">
+          logout
+        </Button>
+      )}
     </nav>
   );
 }
