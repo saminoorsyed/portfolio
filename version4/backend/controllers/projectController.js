@@ -26,7 +26,7 @@ const createProject = asyncHandler(async (req, res) => {
   });
 
   if(project){
-    response.status(201).send({message:"Project successfully created"})
+    res.status(201).send({message:"Project successfully created"})
   }else {
     res.status(400);
     throw new Error("Unable to create project in the database")
@@ -35,7 +35,11 @@ const createProject = asyncHandler(async (req, res) => {
 
 const projectByGenre = asyncHandler(async(req, res)=>{
   try{
-    const keyword = {genre:req.query.search, $options:'i'}
+    const keyword = req.query.search
+      ? {
+          genre: { $regex: req.query.search, $options: "i" },
+        }
+      : {};
     const projects = await Project.find(keyword)
     res.status(200).send(projects)
   }catch(error){
@@ -46,9 +50,9 @@ const projectByGenre = asyncHandler(async(req, res)=>{
 
 const updateProject = asyncHandler(async (req, res) => {
   try {
-    const { title, description, genre, videoId, github, projectLink } =req.body;
+    const { _id, title, description, genre, videoId, github, projectLink } =req.body;
     const updatedProject = await Project.findByIdAndUpdate(
-      id,
+      _id,
       {
         $set: {
           title: title || undefined,
