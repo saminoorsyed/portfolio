@@ -35,6 +35,7 @@ function Navigation() {
       {isAuthor && <Link to="../Messages"> Messages </Link>}
       {!isAuthor && <Link to="../contact"> Contact </Link>}
       {isAuthor && <Link to="../createPost"> Create a Post</Link>}
+      {isAuthor && <Link to="../createProject"> Create a Project</Link>}
       {!isLoggedIn && <Link to="../register"> Login/Signup </Link>}
       {isLoggedIn && (
         <Button onClick={logoutHandler} colorScheme="green">

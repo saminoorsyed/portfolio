@@ -13,18 +13,11 @@
     min-height: 100vh;
     background-position: center;
     font-family: 'Roboto Mono', monospace, Arial, Helvetica, sans-serif;
-    background-color: #d4e3d5;
+    background-color: whitesmoke;
     font-size: 1.2rem;
 }     
 :root {
 /* color pallet is slate from tailwind color palettes */
-background-color: #d4e3d5;
---main-color:#C9E4CA;
---header-footer-color: #C9E4CA;
---mid-color: #55828B;
---font-color: #3B6064;
---border-color: #364958;
---font:'Andika', sans-serif, 'Courier New', Courier, monospace, Arial, Helvetica, sans-serif;
 }
 
 nav{
@@ -53,7 +46,7 @@ main {
 section {
     display: flex;
     flex-direction: column;
-    max-width: 1100px;
+    max-width: 1000px;
     align-items: center;
     gap: 20px;
     margin: 40px;
@@ -116,7 +109,7 @@ article{
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    width: 300px;
+    width: 400px;
     text-align: center;
 }
 
@@ -135,5 +128,5 @@ article{
 .comment{
     border: 1px solid black;
     border-radius: 5px;
-    background: rgb(225, 249, 236);
+    background: white;
 }
