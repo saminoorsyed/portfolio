@@ -6,7 +6,7 @@ const projectSchema = mongoose.Schema(
     description:  { type: String, required: true },
     genre:        { type: String, required: true },
     videoId:      { type: String, required: true },
-    github:       { type:String, required: true },
+    github:       { type: String, required: true },
     projectLink:  { type: String, required: true }
   },
   {
