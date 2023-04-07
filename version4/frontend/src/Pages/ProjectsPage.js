@@ -1,80 +1,63 @@
-// import dependencies
-import axios from 'axios';
-import React, { useState, useEffect, useRef } from 'react';
+import axios from "axios";
+import React, { useState, useEffect, useRef } from "react";
 // import components
-import ProjectCard from '../components/blogComponents/ProjectCard';
-import {FaArrowLeft, FaArrowRight} from 'react-icons/fa'
+import ProjectCard from "../components/blogComponents/ProjectCard";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const ProjectsPage = () => {
   const [featured, setFeatured] = useState([]);
   const [minis, setMinis] = useState([]);
   const [updateFeatured, setUpdateFeatured] = useState(false);
   const [updateMinis, setUpdateMinis] = useState(false);
-  const [leftScroll, setLeftScroll] = useState(0);
-  const [maxLeftScroll, setMaxLeftScroll] = useState(0);
-  
-  const projectContainerRef = useRef(null);
+
+  const featuredContainerRef = useRef(null);
 
   // load and update Featured Projects
-  useEffect(()=>{
+  useEffect(() => {
     const loadFeatured = async () => {
       const { data } = await axios.get("/api/projects?search=featured");
       setFeatured(data);
     };
     loadFeatured();
-
   }, [updateFeatured]);
 
-  useEffect(()=>{
+  useEffect(() => {
     const loadMinis = async () => {
       const { data } = await axios.get("/api/projects?search=minis");
       setMinis(data);
     };
     loadMinis();
-  },[updateMinis]);
+  }, [updateMinis]);
 
-  useEffect(()=> {
-    const container = projectContainerRef.current;
-    const maxScroll = container.scrollWidth -  container.clientWidth
-    setMaxLeftScroll(maxScroll)
-  },[]);
-
-  const handleLeftScroll = () => {
-   const newLeftScroll = Math.max(leftScroll - 400, 0);
-   setLeftScroll(newLeftScroll);
-   projectContainerRef.current.scrollLeft = -newLeftScroll;
-  };
-
-  const handleRightScroll = () => {
-   const newLeftScroll = Math.min(leftScroll + 400, maxLeftScroll);
-   setLeftScroll(newLeftScroll);
-   projectContainerRef.current.scrollLeft = -newLeftScroll;
-  };
-
-
-
+  const handleScroll = (scrollAmt) => {
+    featuredContainerRef.current.scrollLeft+=scrollAmt
+  }
 
   return (
     <section>
-      <div className='scroller'>
-        <FaArrowLeft onClick={handleLeftScroll}/>
-        <div 
-          className="projects-container" 
-          ref={projectContainerRef}>
-          
+      <div className="scroller">
+        <button onClick={()=>handleScroll(-270)}>
+          <FaArrowLeft />
+        </button>
+        <div
+          className="projects-container"
+          ref={featuredContainerRef}
+        >
           {featured.map((project, i) => {
             return <ProjectCard project={project} key={i} />;
           })}
         </div>
-        <FaArrowRight onClick={handleRightScroll}/>
+        <button onClick={()=>handleScroll(270)}>
+          <FaArrowRight/>
+        </button>
       </div>
-      <div className="projects-container" ref={projectContainerRef}>
+      <div className="projects-container">
         {minis.map((project, i) => {
           return <ProjectCard project={project} key={i} />;
         })}
       </div>
     </section>
   );
-}
+};
 
-export default ProjectsPage
+export default ProjectsPage;

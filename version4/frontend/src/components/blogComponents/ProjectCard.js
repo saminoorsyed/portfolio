@@ -25,7 +25,7 @@ const ProjectCard = ({project}) => {
             />
           </div>
           <Stack>
-            <Text style={{ height: "150px", overflow: "hidden"}}>{project.description}</Text>
+            <Text className="card-text">{project.description}</Text>
             <Box>
               <div className="tech">
                 <a href={project.github}>

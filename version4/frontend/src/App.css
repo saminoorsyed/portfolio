@@ -136,14 +136,23 @@ article{
 .projects-container {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: center;
-    overflow-x: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
     width:800px;
     margin-bottom: 20px;
+}
+
+.scroller{
+    display: flex;
 }
 
 .card {
     width: 250px;
     margin-right: 20px;
     flex: 0 0 auto;
+}
+
+.card-text {
+    height: 9rem;
+    overflow: hidden;
 }
