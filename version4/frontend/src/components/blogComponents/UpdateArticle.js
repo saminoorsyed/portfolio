@@ -8,7 +8,7 @@ const UpdateArticle = ({oldTitle, oldContent, oldGenre, oldPic, id, setUpdated})
   const [content, setContent]   = useState(oldContent);
   const [genre, setGenre]       = useState(oldGenre);
   const [pic, setPic]           = useState(oldPic);
-  const [user, setUser]               = useState([])
+  const [user, setUser]         = useState([])
   const [loading, setLoading]   = useState(false);
   const toast                   = useToast();
   
@@ -71,7 +71,6 @@ const UpdateArticle = ({oldTitle, oldContent, oldGenre, oldPic, id, setUpdated})
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-            console.log({id, title, content, genre, pic})
             const response = await axios.put(
                 "/api/posts",
                 {id, title, content, genre, pic},

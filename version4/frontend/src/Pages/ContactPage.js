@@ -99,7 +99,7 @@ const ContactPage = () => {
         </Container>}
         {!isLoggedIn &&
         <section>
-            <h2> To send a message to Sami, you must register or log in first. Please navigate to the login/Signup tab above first.</h2>
+            <p> Please navigate to the login/Signup tab to login or sign up first.</p>
         </section>}
     </>
   )

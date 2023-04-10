@@ -4,7 +4,7 @@ export default function About() {
   return (
     <article className='about'>
         <h2>About me</h2>
-        <p>I currently live in Brooklyn New York and spend my time studying computer science online at Oregon State University while working on a few personal projects like this website.</p>
+        <p>I currently live in Brooklyn, New York and spend my time studying computer science online at Oregon State University while working on a few personal projects like this website.</p>
         <p> Outside of the time that I spend on my computer and reading, I enjoy a bit of creative writing, running, and fiddling around on my guitar.</p>
         <h2> Education </h2>
         <div className= "description" >
@@ -15,7 +15,7 @@ export default function About() {
         <div className= "description" >
           <h3> Current Self Study:</h3>
           <p> <em><u>The Odin Project:</u></em> A self paced full stack boot camp focusing on the use of Mongo DB, Express JS, React, and Node JS</p>
-          <p> <em><u>Readings:</u></em> Modern JavaScript for the impatient, Fluent Python, Relational database design and implementation, Handbook of software Engineering Methods, Computer Networking: a Top-down Approach.</p>
+          <p> <em><u>Readings:</u></em> Modern JavaScript for the Impatient, Fluent Python, Relational database design and implementation, Handbook of software Engineering Methods, Computer Networking: a Top-down Approach.</p>
         </div>
 
 

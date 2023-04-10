@@ -156,3 +156,10 @@ article{
     height: 9rem;
     overflow: hidden;
 }
+
+
+/* titles and headers */
+h2{
+    font-size: 2rem;
+    font-weight: 1000;
+}

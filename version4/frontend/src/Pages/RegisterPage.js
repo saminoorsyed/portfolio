@@ -1,6 +1,6 @@
 import React from 'react'
 // import elements from chakra UI
-import { Box, Container, Text, Tabs, TabList, TabPanels, Tab, TabPanel, Heading } from '@chakra-ui/react';
+import { Box, Container, Tabs, TabList, TabPanels, Tab, TabPanel, Heading } from '@chakra-ui/react';
 // import components
 import SignUp from '../components/authentication/SignUp';
 import Login from '../components/authentication/Login';
@@ -8,6 +8,8 @@ import Login from '../components/authentication/Login';
 const RegisterPage = () => {
   return (
       <Container width="600px" centerContent>
+        <p style={{marginTop: "40px"}}> Sign up or log in to comment on posts or to send a message to Sami from the contact page</p>
+
         <Box
         padding= {4}
         width = "100%"
