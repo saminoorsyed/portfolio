@@ -157,9 +157,25 @@ article{
     overflow: hidden;
 }
 
+/* contact info */
+
+.contact{
+    display: flex;
+    gap: 15px
+}
+
+.contact a {
+    transition: 0.5s ease;
+}
+
+.contact a:hover {
+    font-weight: 700;
+}
+
 
 /* titles and headers */
 h2{
     font-size: 2rem;
     font-weight: 1000;
 }
+

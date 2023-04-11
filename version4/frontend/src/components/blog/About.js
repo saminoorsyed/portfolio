@@ -10,6 +10,7 @@ export default function About() {
         <div className= "description" >
           <h3>Oregon State University (Spring 2024):</h3>
           <p> Intro to programming 1 & 2, Discrete structures, Data Structures, Algorithms, Computer Architecture, Web Development, software Engineering 1, Databases, Computer Networks.</p>
+          <p> <em><u>upcoming coursework:</u></em> Software Engineering 2, Operating Systems, Mobile Development, Cloud Development, Capstone Project.</p>
         </div>
 
         <div className= "description" >

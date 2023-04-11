@@ -56,7 +56,13 @@ const ContactPage = () => {
             return;
     };
     return (
-    <>
+    <section>
+        <div className='contact'>
+            <a className='contact' href="https://www.linkedin.com/in/sami-noor-syed/"><em><u>linkedIn</u></em></a>
+            <a className='contact' href='https://github.com/saminoorsyed'><em><u>GitHub</u></em></a>
+            <a className='contact' href=""><em><u>twitter</u></em></a>
+            <p>email: samisyed.dev@gmail.com</p>
+        </div>
     {isLoggedIn &&
         <Container
             maxW='xl'
@@ -98,10 +104,9 @@ const ContactPage = () => {
             </Box>
         </Container>}
         {!isLoggedIn &&
-        <section>
-            <p> Please navigate to the login/Signup tab to login or sign up first.</p>
-        </section>}
-    </>
+            <p> Feel free to contact me via my social media or email address above, or if you'd like to contact me through this site, login or sign up to unlock user privileges.</p>
+        }
+    </section>
   )
 }
 
