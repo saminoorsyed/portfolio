@@ -1,6 +1,5 @@
 import { Button } from '@chakra-ui/react'
 import React from 'react'
-import axios from 'axios'
 const Message = ({header, content, name, email, date, _id, deleteHandler}) => {
   return (
     <>

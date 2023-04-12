@@ -2,7 +2,7 @@ import { Box, Button, Container, FormControl, FormLabel, Input, Textarea, VStack
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
-const UpdateArticle = ({oldTitle, oldContent, oldGenre, oldPic, id, setUpdated}) => {
+const UpdateArticle = ({oldTitle, oldContent, oldGenre, oldPic, id, setUpdated, updated}) => {
   // set state variables for post request
   const [title, setTitle] = useState(oldTitle);
   const [content, setContent]   = useState(oldContent);
@@ -19,7 +19,6 @@ const UpdateArticle = ({oldTitle, oldContent, oldGenre, oldPic, id, setUpdated})
             setUser(userObj)
         }
         loadUser();
-        setUpdated(false);
     },[])
     
     const postDetails = (pics)=>{
@@ -85,7 +84,7 @@ const UpdateArticle = ({oldTitle, oldContent, oldGenre, oldPic, id, setUpdated})
                 position:"bottom",
             });  
             console.log( response)   
-            setUpdated(response.data);
+            setUpdated(!updated);
         } catch (error) {
             toast({
                 title: "An error occurred!",

@@ -2,13 +2,16 @@ import { Container, Box, Button } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 
 const Comment = ({ content, username, date, user_id, comment_id, deleteComment }) => {
-  const [isAuthorized, setIsAuthorized] = useState(false);
-
+  const [isAuthor, setIsAuthor] = useState(false);
+  
   useEffect(() => {
-    const userObj = JSON.parse(localStorage.getItem("userInfo"));
-    if (userObj && (userObj._id === user_id || userObj.author)) {
-      setIsAuthorized(true);
+    const loadUser = ()=>{
+      const userObj = JSON.parse(localStorage.getItem("userInfo"));
+      if (userObj && (userObj._id === user_id || userObj.author)) {
+        setIsAuthor(true);
+      }
     }
+    loadUser();
   }, []);
 
   return (
@@ -24,7 +27,7 @@ const Comment = ({ content, username, date, user_id, comment_id, deleteComment }
             {username} on {date.slice(0, 10)}
           </em>
         </p>{" "}
-        {isAuthorized && <Button onClick={()=>deleteComment(comment_id)} border="1px">Delete</Button>}
+        {isAuthor && <Button onClick={()=>deleteComment(comment_id)} border="1px">Delete</Button>}
       </Box>
       <Box>
         <p>

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { useToast, Container, Box, VStack, FormControl, FormLabel, Input, Textarea, Button } from '@chakra-ui/react';
+import { useToast, VStack, FormControl, FormLabel, Input, Textarea, Button } from '@chakra-ui/react';
 import axios from 'axios';
 
 const UpdateProject = ({project, setUpdated, updated}) => {
-    const [_id, set_id]                   = useState(project._id)
+    const _id                             = project._id
     const [title, setTitle]               = useState(project.title);
     const [description, setDescription]   = useState(project.description);
     const [genre, setGenre]               = useState(project.genre);
@@ -40,7 +40,7 @@ const UpdateProject = ({project, setUpdated, updated}) => {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-            const response = await axios.put(
+            await axios.put(
                 "/api/projects",
                 { _id, title, description, genre, videoId, github, projectLink },
                 config

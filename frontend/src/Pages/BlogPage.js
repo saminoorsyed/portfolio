@@ -112,6 +112,7 @@ export default function BlogPage() {
               _id={article._id}
               genre={article.genre}
               setUpdated={setUpdated}
+              updated = {updated}
               deleteHandler={deleteHandler}
               key={i}
             />

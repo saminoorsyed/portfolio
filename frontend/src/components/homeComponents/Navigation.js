@@ -18,7 +18,6 @@ function Navigation() {
 
   const logoutHandler = () => {
     const confirmLogout = window.confirm("are you sure you want to logout");
-    console.log(confirmLogout);
     if (confirmLogout) {
       localStorage.removeItem("userInfo");
       setIsLoggedIn(false);
