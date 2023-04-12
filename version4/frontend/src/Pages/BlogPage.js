@@ -1,11 +1,20 @@
-// import dependencies
+// import dependencies and hooks
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { Button, Container, FormControl, FormLabel, Input, Box} from "@chakra-ui/react";
+// import components
+import {
+  Button,
+  Container,
+  FormControl,
+  FormLabel,
+  Input,
+  Box,
+} from "@chakra-ui/react";
 import Article from "../components/blogComponents/Article";
 
 export default function BlogPage() {
+  // state variables
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [genre, setGenre] = useState("");
@@ -13,6 +22,10 @@ export default function BlogPage() {
   const [delMessId, setDelMessId] = useState(null);
   const [updated, setUpdated] = useState([]);
 
+  // set content to filtered articles
+  const results = filterItems(articles, query);
+
+  // define functions
   const deleteHandler = async (id) => {
     const userObj = JSON.parse(localStorage.getItem("userInfo"));
     if (userObj && userObj.author) {
@@ -39,8 +52,7 @@ export default function BlogPage() {
     setQuery(e.target.value);
   }
 
-  const results = filterItems(articles, query);
-
+  // load all articles based on tab clicked
   useEffect(() => {
     async function getArticles() {
       const { data } = await axios.get(`/api/posts?search=${genre}`);
@@ -50,9 +62,11 @@ export default function BlogPage() {
 
     getArticles();
   }, [genre, delMessId, updated]);
+
   return (
     <section style={{ gap: "0px" }}>
       <h1 style={{ fontSize: "2.5rem" }}>The Blog</h1>
+      {/* use nav and links to copy site navigation style + filter articles by genre */}
       <nav className="blogNav">
         <Link onClick={() => setGenre("")}> All </Link>
         <Link onClick={() => setGenre("Algorithms")}> Algorithms </Link>
@@ -89,18 +103,18 @@ export default function BlogPage() {
       {!loading &&
         results.map((article, i) => {
           return (
-              <Article
-                title={article.title}
-                content={article.content}
-                author={article.authorName}
-                pic={article.pic}
-                date={article.createdAt}
-                _id={article._id}
-                genre={article.genre}
-                setUpdated={setUpdated}
-                deleteHandler={deleteHandler}
-                key={i}
-              />
+            <Article
+              title={article.title}
+              content={article.content}
+              author={article.authorName}
+              pic={article.pic}
+              date={article.createdAt}
+              _id={article._id}
+              genre={article.genre}
+              setUpdated={setUpdated}
+              deleteHandler={deleteHandler}
+              key={i}
+            />
           );
         })}
     </section>

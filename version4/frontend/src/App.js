@@ -4,7 +4,7 @@ import {
   Route,
 } from "react-router-dom";
 // import app components
-import Navigation from './components/blog/Navigation'
+import Navigation from './components/homeComponents/Navigation'
 // import main pages
 import MessagesPage from './Pages/MessagesPage'
 import RegisterPage from './Pages/RegisterPage';
@@ -14,7 +14,7 @@ import ProjectsPage from './Pages/ProjectsPage';
 import BlogPage from './Pages/BlogPage';
 import CreatePostPage from './Pages/CreatePostPage';
 import CreateProjectPage from './Pages/CreateProjectPage';
-import Footer from './components/blog/Footer';
+import Footer from './components/homeComponents/Footer';
 
 
 

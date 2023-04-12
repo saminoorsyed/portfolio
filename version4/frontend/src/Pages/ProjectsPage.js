@@ -1,7 +1,7 @@
-import axios from "axios";
+// import dependencies
 import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
 // import components
-import { Button } from "@chakra-ui/react";
 import ProjectCard from "../components/blogComponents/ProjectCard";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
@@ -12,16 +12,25 @@ const ProjectsPage = () => {
   const [updateMinis, setUpdateMinis] = useState(false);
   const [isAuthor, setIsAuthor] = useState(false);
   const featuredContainerRef = useRef(null);
-  const minisContainerRef = useRef(null)
-  
-  useEffect(() =>{
-    const userObj = JSON.parse(localStorage.getItem("userInfo"));
-    if (userObj && userObj.author){
-      setIsAuthor(true);
-    };
-  },[]);
+  const minisContainerRef = useRef(null);
 
-  // load and update Featured Projects
+  // define scroll functionality
+  const handleScroll = (containerRef, direction) => {
+    if (direction === "right") {
+      containerRef.current.scrollLeft += 270;
+    } else {
+      containerRef.current.scrollLeft -= 270;
+    }
+  };
+  // load user priv
+  useEffect(() => {
+    const userObj = JSON.parse(localStorage.getItem("userInfo"));
+    if (userObj && userObj.author) {
+      setIsAuthor(true);
+    }
+  }, []);
+
+  // load and update Projects
   useEffect(() => {
     const loadFeatured = async () => {
       const { data } = await axios.get("/api/projects?search=featured");
@@ -30,22 +39,13 @@ const ProjectsPage = () => {
     loadFeatured();
   }, [updateFeatured]);
 
-  useEffect(()=>{
+  useEffect(() => {
     const loadMinis = async () => {
       const { data } = await axios.get("/api/projects?search=minis");
       setMinis(data);
-    }
-    loadMinis();
-  },[updateMinis])
-
-  const handleScroll = (containerRef, direction) => {
-    if (direction === "right"){
-      containerRef.current.scrollLeft+=270;
-    }else{
-      containerRef.current.scrollLeft-=270;
     };
-  };
-
+    loadMinis();
+  }, [updateMinis]);
   return (
     <section>
       <h2>Featured</h2>
@@ -54,9 +54,18 @@ const ProjectsPage = () => {
           <FaArrowLeft />
         </button>
         <div className="projects-container" ref={featuredContainerRef}>
-          {featured.length > 0 && featured.map((project, i) => {
-            return <ProjectCard project={project} isAuthor={isAuthor} updated={updateFeatured} setUpdated={setUpdateFeatured} key={i} />;
-          })}
+          {featured.length > 0 &&
+            featured.map((project, i) => {
+              return (
+                <ProjectCard
+                  project={project}
+                  isAuthor={isAuthor}
+                  updated={updateFeatured}
+                  setUpdated={setUpdateFeatured}
+                  key={i}
+                />
+              );
+            })}
         </div>
         <button onClick={() => handleScroll(featuredContainerRef, "right")}>
           <FaArrowRight />
@@ -68,9 +77,18 @@ const ProjectsPage = () => {
           <FaArrowLeft />
         </button>
         <div className="projects-container" ref={minisContainerRef}>
-          {minis.length > 0 &&minis.map((project, i) => {
-            return <ProjectCard project={project} isAuthor={isAuthor} updated = {updateMinis} setUpdated={setUpdateMinis} key={i} />;
-          })}
+          {minis.length > 0 &&
+            minis.map((project, i) => {
+              return (
+                <ProjectCard
+                  project={project}
+                  isAuthor={isAuthor}
+                  updated={updateMinis}
+                  setUpdated={setUpdateMinis}
+                  key={i}
+                />
+              );
+            })}
         </div>
         <button onClick={() => handleScroll(minisContainerRef, "right")}>
           <FaArrowRight />

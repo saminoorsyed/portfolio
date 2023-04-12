@@ -1,77 +1,88 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom';
-import { useToast, Container, Box, VStack, FormControl, FormLabel, Input, Textarea, Button } from '@chakra-ui/react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  useToast,
+  Container,
+  Box,
+  VStack,
+  FormControl,
+  FormLabel,
+  Input,
+  Textarea,
+  Button,
+} from "@chakra-ui/react";
+import axios from "axios";
+
 const CreateProjectPage = () => {
-    // set state variables for post request
-    const [title, setTitle]               = useState("");
-    const [description, setDescription]   = useState("");
-    const [genre, setGenre]               = useState("");
-    const [videoId, setVideoId]           = useState();
-    const [github, setGithub]             = useState("");
-    const [projectLink, setProjectLink]   = useState("");
-    const [user, setUser]                 = useState({});
-    const [isAuthor, setIsAuthor]         = useState(false);
-    const navigate                        = useNavigate();
-    const toast                           = useToast();
+  // set state variables for post request
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [genre, setGenre] = useState("");
+  const [videoId, setVideoId] = useState();
+  const [github, setGithub] = useState("");
+  const [projectLink, setProjectLink] = useState("");
+  const [user, setUser] = useState({});
+  const [isAuthor, setIsAuthor] = useState(false);
 
+  // set hooks
+  const navigate = useNavigate();
+  const toast = useToast();
 
-    useEffect(() => {
-        async function loadUser() {
-          const userObj = JSON.parse(localStorage.getItem("userInfo"));
-          setUser(userObj);
-          if (userObj.author){
-            setIsAuthor(true)
-            }
-        // set the user to the user object stored in the browser
-          }
-        loadUser();
-    }, []);
-    
-    const submitHandler = async () => {
-        if (!genre || !title || !description || !videoId || !github) {
-            toast({
-                title: "Please fill in al the Fields",
-                status: "warning",
-                duration: 4500,
-                isClosable: true,
-                position: "bottom",
-                });
-            return;
-        }
-        try {
-            const config = {
-                headers: {
-                    "description-type": "application/json",
-                    Authorization: `Bearer ${user.token}`,
-                },
-            };
-            await axios.post(
-                "/api/projects",
-                { title, description, genre, videoId, github, projectLink },
-                config
-                );
+  const submitHandler = async () => {
+    if (!genre || !title || !description || !videoId || !github) {
+      toast({
+        title: "Please fill in al the Fields",
+        status: "warning",
+        duration: 4500,
+        isClosable: true,
+        position: "bottom",
+      });
+      return;
+    }
+    try {
+      const config = {
+        headers: {
+          "description-type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      };
+      await axios.post(
+        "/api/projects",
+        { title, description, genre, videoId, github, projectLink },
+        config
+      );
 
-            toast({
-                title: "Project Created",
-                status: "success",
-                duration: 4500,
-                isClosable: true,
-                position: "bottom",
-                });
-        navigate("/");
-    }catch (error) {
-        toast({
-            title: "An error occurred!",
-            description: error.response.data.message,
-            status: "warning",
-            duration: 4500,
-            isClosable: true,
-            position: "bottom",
-            });
-        return;
-        }
-    };
+      toast({
+        title: "Project Created",
+        status: "success",
+        duration: 4500,
+        isClosable: true,
+        position: "bottom",
+      });
+      navigate("/");
+    } catch (error) {
+      toast({
+        title: "An error occurred!",
+        description: error.response.data.message,
+        status: "warning",
+        duration: 4500,
+        isClosable: true,
+        position: "bottom",
+      });
+      return;
+    }
+  };
+
+  useEffect(() => {
+    async function loadUser() {
+      const userObj = JSON.parse(localStorage.getItem("userInfo"));
+      setUser(userObj);
+      if (userObj.author) {
+        setIsAuthor(true);
+      }
+    }
+    loadUser();
+  }, []);
 
   return (
     <section>
@@ -143,6 +154,6 @@ const CreateProjectPage = () => {
       )}
     </section>
   );
-}
+};
 
-export default CreateProjectPage
+export default CreateProjectPage;
