@@ -16,9 +16,6 @@
     background-color: whitesmoke;
     font-size: 1.2rem;
 }     
-:root {
-/* color pallet is slate from tailwind color palettes */
-}
 
 nav{
     display: flex;
